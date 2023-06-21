@@ -1,0 +1,453 @@
+// * T1.user v0.2.51
+// User popout / (Modal)
+
+
+// -> User Popout
+.layerContainer-2lfOPe .userPopoutOuter-1OHwPL {
+  border-radius: 12px ;
+
+  @include shadow_effect("box_2");
+
+  // Secondary container
+  .userPopoutInner-nv9Y92 { 
+    position: relative ;
+
+    &::before { display: none }
+  }
+
+  // .betaTag-2bWvGF { display: none }
+
+  // Nitro upsell (dismissible)
+  .wrapper-C1y4Sz {
+    width: 100% ;
+  }
+
+  // -> Banner
+  // main wrapper
+  .bannerSVGWrapper-2CLfzN {
+    height: 120px ;
+    min-height: 120px !important;
+
+    foreignObject {
+      mask: none ;
+    }
+
+    &[viewBox="0 0 340 60"] foreignObject {
+      transform: translateY(-30px);
+    }
+
+    &[viewBox="0 0 340 90"] foreignObject {
+      transform: translateY(-15px);
+    }
+
+    .banner-1YaD3N {
+      height: 120px ;
+      filter: brightness(0.85);
+
+      // Custom image banner
+      &.bannerPremium-kkSkPv {
+        filter: brightness(0.75);
+      }
+  
+      // Edit own profile btn
+      .pencilContainer-18TrEJ {
+        top: 78px ;
+        right: 14px ;
+      }
+  
+      .premiumIconWrapper-32h0Ri, .gifTag-1TvtGO { display: none }
+    }
+  }
+  // <- Banner
+
+  // -> Avatar/Status
+  .avatarWrapper-eenWra {
+    top: 20px ;
+    left: 20px ;
+    z-index: 1;
+    
+    .svg-1G_H_8 { 
+      overflow: visible ;
+      contain: unset ;
+    }
+
+    foreignObject { 
+      mask: none ;
+      overflow: visible ;
+    }
+
+    // Img
+    .avatar-31d8He {
+      border-radius: 7.5% ;
+
+      &:not([src*=".gif"]) { @include shadow_effect("drop_1") }
+    }
+
+    // Hover overlay
+    .avatarHint-k7pYop {
+      border-radius: 7.5% ;
+    }
+
+    .avatarDecorationHint-3n-p6O {
+      border-radius: 7.5% !important ;
+      top: 0px ;
+      left: 0px ;
+      height: 80px ;
+      width: 80px ;
+
+      .avatarHintInner-2HUAWj {
+        font-size: 12px ;
+      }
+    }
+
+    // Status icon
+    .pointerEvents-2KjWnj {
+      position: absolute ;
+      x: -8px ;
+      y: 116px ;
+      pointer-events: none ;
+
+      &[mask="url(#svg-mask-status-online-mobile)"] {
+        y: 115px ;
+        height: 18px ;
+        width: 14px ;
+      }
+    }
+
+    // weird second status after status changes
+    foreignObject ~ .cursorDefault-2M8ZNp { display: none }
+
+    // Shadow for status icon
+    [style="opacity: 0.45;"] { display: none }
+  }
+  // <- Profile picture/Avatar
+
+  // -> Badges / Panel badges
+  .profileBadges-2pItdR {
+    position: absolute ;
+    top: 14px ;
+    right: 14px ;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1 ;
+
+    // not empty
+    &.containerWithContent-2YWS8V {
+      padding: 2px ;
+    }
+
+    // bd dev badge
+    .bd-profile-badge {
+      width: 22px ;
+      text-align: center ;
+    }
+  }
+  // <- Badges
+
+  // -> Main user info 
+  .overlayBackground-2aa7wt {
+    margin: 0 ;
+    border-radius: 0 ;
+
+    // Info sections except chat box
+    .section-28YDOf:not(.section-1TK4Q0) {
+      padding: 0 12px 0 12px ;
+
+      > :first-child {
+        padding-top: 12px ;
+      }
+    }
+
+    // Chat/DM section
+    .section-1TK4Q0 {
+      padding: 12px 12px 0 12px ;
+    }
+
+    // -> Username/Nickname
+    // -> With Nickname
+    // Nickname
+    .nickname-3P1RuO {
+      margin-left: 24px ;
+      font-size: 18px ;
+      color: var(--header-primary);
+    }
+
+    // Discriminator
+    .userTagWithNickname-13lfvd .discrimBase-V65kTs {
+      margin-left: 2px ;
+      font-size: 12px ;
+      line-height: normal ;
+      vertical-align: baseline ;
+    }
+    // <- With Nickname
+
+    // -> Without Nickname
+    // Username
+    .userTagUsernameNoNickname-2lKUnI {
+      margin-left: 24px ;
+      color: var(--header-primary);
+    }
+
+    // Discriminator
+    .userTagDiscriminatorNoNickname-3dioAe {
+      margin-left: 4px ;
+      color: var(--header-secondary);
+      font-size: 17px ;
+      font-weight: 500 ;
+      line-height: normal ;
+      vertical-align: baseline ;
+    }
+    // <- Without Nickname
+    // <- Username/Nickname
+
+    // -> Custom status emoji
+    .customStatusSoloEmoji-a_jSVz {
+      height: 30px ;
+      width: 30px ;
+    }
+    // <- Custom status
+
+    // -> Body
+    .scroller-15bIdk{
+      padding: 0 !important;
+
+      &::-webkit-scrollbar { display: none }
+    }
+
+    // -> About Me
+    // personal roles beta
+    code.inline {
+      background: var(--profile-role-pill-background-color) ;
+    }
+        
+    // <- About Me
+
+    // -> Bot stuff
+    // Add Bot ot server btn
+    .buttonsContainer-3iOFIV { display: none  }
+    // has imp.
+    .section-28YDOf:has(.buttonsContainer-3iOFIV) { display: none  }
+
+    // Bot commands
+    .popularApplicationCommandsList-QxQITG .sizeIcon-29J6C- {
+      background: var(--profile-role-pill-background-color);
+
+      &:hover {
+        background: var(--button-secondary-background);
+      }
+
+      .contents-3NembX {
+        font-weight: 400 ;
+      }
+    }
+    // <- Bot stuff
+
+    // -> Roles
+    // Role item
+    .role-2TIOKu {
+      border: none ;
+    }
+
+    // remove role btn
+    .roleRemoveButton-17oXnT > :nth-last-child(2) {
+      cursor: pointer ;
+    }
+    // has imp.
+    .roleRemoveButton-17oXnT .roleCircle-3TFUOr:has(+ .roleRemoveIcon-387wKV) {
+      cursor: pointer ;
+    }
+
+    .roleRemoveIcon-387wKV {
+      pointer-events: none ;
+    }
+    // <- Roles
+
+
+    // -> Activitys (streaming in channel, games, spotify, ..)
+    .activity-3uaYny {
+
+      .button-TGAkj4 {
+        @include Btn();
+      }
+    }
+    // <- Activitys
+
+    // -> Connections
+    .connectionsContainer-3MmgH3 {
+      border: none ;
+
+      // Connection item
+      .connectedAccountContainer-3aLMHJ {
+        padding: 6px 0 ;
+      }
+
+      // view all connec. btn
+      .connections-2K6Bu6 { display: none }
+    }
+    // <- Connections
+
+    // -> Note
+    .note-1NN2aP textarea:focus {
+      background: none ;
+    }
+    // <- Note
+
+    // -> Quick Dm
+    .messageInputContainer-24qqTx {
+      padding: 4px 12px 6px 12px ;
+      margin: 0 -12px 0 -12px ;
+      border: none ;
+      border-radius: 0 ;
+    }
+    // <- Quick Dm
+    // <- Body
+  }
+  // <- Main user info
+
+  // -> Popout no custom colors
+  // .userProfileInnerUnthemed-1XxIZu, // old ?
+  .userProfileInnerThemedNonPremium-2AJg-H {
+    
+    // body
+    .overlayBackground-2aa7wt {
+      background: var(--background-tertiary);
+    }
+
+    // Quick Dm
+    .messageInputContainer-24qqTx {
+      background: var(--background-secondary);
+    }
+  }
+  // <- Popout no custom colors
+
+  // -> Popout with custom colors
+  &.userProfileOuterThemed-2BgJCM {
+    padding: 0 ;
+    background: linear-gradient(transparent 120px,var(--profile-gradient-primary-color) 0,var(--profile-gradient-secondary-color));
+
+    .userPopoutInner-nv9Y92 {
+      background: var(--profile-gradient-overlay-color);
+    }
+
+    // Quick Dm
+    .messageInputContainer-24qqTx {
+      border-top: 1px solid var(--profile-message-input-border-color);
+    }
+  }
+  // <- Popout with custom colors
+}
+
+// Indicator while UserPopout is loading
+.loadingPopout-1tyQMM { display: none }
+// <- User Popout
+
+
+// -> Account Popout
+.accountProfilePopoutWrapper-3GskID {
+  left: 0 ;
+
+  .menu-2TXYjN { 
+    max-width: unset ;
+    background: var(--background-tertiary) ;
+    
+    .submenu-3ycVEH {
+      
+      .separator-12G2Op { display: none }
+      
+      .item-5ApiZt {
+        border-radius: 4px ;
+
+        &#account-status-picker--online.focused-3LIdPu { background: var(--status-online) }
+        
+        &#account-status-picker--idle.focused-3LIdPu { background: var(--status-idle) }
+
+        &#account-status-picker--dnd.focused-3LIdPu { background: var(--status-DnD) }
+        
+        &#account-status-picker--invisible.focused-3LIdPu { background: var(--status-invisible) }
+      }
+    }
+  }
+}
+// <- Account Popout
+
+
+// -> Profile sidepanel in dms
+.profilePanel-2VBkh8 {
+
+  .userPanelOuter-XfFELn, .userPanelInner-3KPel3 {
+    background: none ;
+  }
+
+  // Background layer when themed
+  .userPanelInner-3KPel3::before { display: none }
+
+  // Scrollbar
+  .scrollerBase-1Pkza4::-webkit-scrollbar { display: none }
+
+  // -> Banner
+  .bannerSVGWrapper-2CLfzN {
+    border-radius: 8px ;
+    transform: scale(.92);
+
+    foreignObject {
+      mask: none ;
+    }
+  }
+  // <- Banner
+
+  // -> Badges
+  .badgelistGroup-_4Ddiq {
+    min-height: unset ;
+    margin: 0 16px 0 0 ;
+  }
+
+  .badgeList-2hF9ig {
+    background: var(--background-modifier-accent);
+
+    // empty badge list
+    &:not(.containerWithContent-2Yws8V) { display: none }
+  }
+  // <- Badges
+
+  // -> Profile picture/Avatar
+  .avatarPositionPanel-3ZMJUj {
+    position: relative ;
+    top: 0 ;
+    left: 0 ;
+    margin-top: 16px ;
+    margin-bottom: 10px ;
+    
+    .wrapper-3Un6-K {
+      margin: 0 auto ;
+    }
+
+    .svg-1G_H_8 { 
+      overflow: visible ;
+
+      // status icon background
+      [style*="opacity"] {  display: none }
+    }
+
+    // status
+    .pointerEvents-2KjWnj, .cursorDefault-2M8ZNp { display: none }
+
+    foreignObject { 
+      mask: none ;
+      overflow: visible ;
+    }
+
+    // Img
+    .avatar-31d8He {
+      border-radius: 8px ;
+
+      &:not([src*=".gif"]) { @include shadow_effect("drop_1") }
+    }
+  }
+  // <- Profile picture/Avatar
+
+  // -> Content body
+  .overlayBackground-2aa7wt {
+    background: var(--background-modifier-accent);
+  }
+  // <- Content body
+}
+// <- Profile sidepanel in dms

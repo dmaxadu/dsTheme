@@ -1,0 +1,654 @@
+// * T1.server-view v0.1.41
+// Channels, Panels / Members / Server discovery
+
+// -> Text/Voice channels
+.container-1NXEtd {
+  top: 48px ;
+  margin-bottom: 48px;
+  
+  // unread msg indicator
+  .unread-XRkyaQ { display: none }
+
+  // Current server event, Feature promotion
+  .channelNotice-K4UfZY, .channelNotice-7cg_jN {
+    
+    // Event name
+    .colorHeaderPrimary-jN_yGr {
+      color: var(--header-secondary);
+    }
+    
+    // .joinButton-1HdI2a {
+    .button-f2h6uQ {
+      @include Btn("background");
+    }
+  }
+  
+  // Scrollbar
+  .scroller-1ox3I2::-webkit-scrollbar { display: none }
+  
+  // Server boost progress bar
+  .container-2giAcK {
+    position: relative ;
+    height: calc(24px * var(--show-serverboost-stats, 1));
+    margin: -8px 0 8px 0 ;
+    overflow: hidden ;
+    
+    // Text container
+    .textArea-7J7xQx {
+      margin: 0 12px ;
+      
+      // Nitro flower icon thing
+      .flowerStarContainer-1QeD-L { display: none }
+      
+      // Text "Goal:LVL"
+      .colorInteractiveActive-30E9n8 {
+        color: var(--header-secondary);
+      }
+    }
+    
+    // Container progress bar
+    .progressBarContainer-1efroK {
+      position: absolute ;
+      top: 0 ;
+      width: 100% ;
+      margin: 0 ;
+      background: none ;
+      visibility: hidden ;
+    
+      // Progress bar
+      .progressBar-2yl2pi {
+        height: 24px ;
+        opacity: .15 ;
+        border-top-right-radius: 5px ;
+        border-bottom-right-radius: 5px ;
+      }
+    
+      // End of bar icon 
+      .tadaIcon-313rPm { display: none }
+    }
+    
+    &:hover .progressBarContainer-1efroK {
+      visibility: visible ;
+    }
+    
+    // Bottom spacer
+    .divider-3qUeLQ { display: none }
+    
+    // Channel category header if adjacent
+    + .containerDefault-3TQ5YN {
+      padding-top: 8px ;
+    }
+  }
+
+  // Special channel btns to channels seperator(s)
+  .sectionDivider-189lqb {
+    display: none ;
+
+    + :not([class])[style*="height:"] { display: none }
+  }
+  
+  // Category header name
+  .container-q97qHp {
+    font-weight: 600 ;
+  }
+  
+  // Text and Voice Channels
+  .wrapper-NhbLHG {
+    
+    // Icon ("#", speaker, ..)
+    .icon-2W8DHg {
+      width: 15px ;
+      color: var(--channels-default);
+      opacity: .8 ;
+    }
+    
+    // Channel name
+    .name-28HaxV { color: var(--channels-default) }
+    
+    // Channel options and infos
+    // Settings and invite buttons
+    .iconItem-1EjiK0 { display: none }
+
+    // Mentions badge
+    @include Mentions_icon(".numberBadge-37OJ3S");
+    
+    // New forum posts badge
+    .newPostCount-3SXe5K, .activePostCount-3b4wM_ {
+      border: none ;
+    }
+
+    
+    // Connection limit (voice)
+    .wrapper-2fEmwW {
+      
+      span { background: transparent }
+      
+      .total-1c5KCN::after {
+        border: none ;
+        content: "|" ;
+        left: -5px ;
+        top: -1px ;
+      }
+    }
+    
+    // container for hover
+    .content-1gYQeQ {
+      background: transparent;
+      
+      &:hover {
+        .name-28HaxV { color: var(--interactive-hover) }
+        .iconItem-1EjiK0 { display: block }
+      }
+    }
+    
+    // Channel selected / connected
+    &.modeSelected-3DmyhH, &.modeConnected-NrO4cP {
+      // Channel name
+      .name-28HaxV { color: var(--interactive-active) }
+      // Channel icon (left)
+      .icon-2W8DHg { color: var(--interactive-active) }
+    }
+    
+    // Channel muted
+    &.modeMuted-2T4MDZ {
+      // Channel icon (left)
+      .icon-2W8DHg { color: var(--interactive-muted) }
+    }
+    
+    // Channel unread
+    &.modeUnread-3Cxepe {
+      // pill
+      .unread-36eUEm { background-color: var(--interactive-hover) }
+    }
+
+    // Channel no permission
+    &.modeLocked-3sToxd {
+
+      .mainContent-20q_Hp {
+        cursor: not-allowed ;
+      }
+
+      .name-28HaxV {
+        color: var(--interactive-muted);
+      }
+    }
+  }
+
+  // "new unreads" msgs bar in channel list
+  .container-24rGVp .bar-wDIGjg {
+    background: var(--background-secondary-alt);
+    opacity: 1 ;
+    box-shadow: none ;
+
+    @include shadow_effect("box_2");
+  }
+  
+  // Threads indicator spine thing
+  .spine-29OFwR {
+    color: var(--channels-default);
+    opacity: .5 ;
+  }
+  
+  // User in Voice channel
+  .voiceUser-3nRK-K {
+
+    // "live" indicator
+    .live-1V2D-f { 
+      background: none !important ;
+      color: var(--red) ;
+    }
+  }
+  
+  // New in-server feature notification
+  .wrapper-Hd8H2G .container-JMJRDf {
+    background: var(--background-tertiary) ;
+    
+    .button-f2h6uQ {
+      @include Btn("background");
+    }
+  }
+}
+// <- Text/Voice channels
+
+
+// -- Sidebar Panels (Profile, Activity,..)
+.sidebar-1tnWFu .panels-3wFtMD {
+  
+  // Profile Container
+  .container-YkUktl {
+    position: absolute ;
+    height: 48px ;
+    width: 240px ;
+    top: 0 ;
+    box-sizing: border-box ;
+
+    // Pfp, name container
+    .avatarWrapper-1B9FTW {
+      margin: 6px 8px 6px 0 ;
+      background: none ;
+    }
+
+    // Buttons
+    .button-12Fmur {
+      background: none ;
+    }
+  }
+  
+  // Activity Container
+  .activityPanel-9icbyU {
+    height: 32px ;
+    padding: 6px 10px ;
+    
+    // Image
+    .gameIconWrapper-zXQ03M { 
+      height: 32px;
+    }
+    
+    // Text
+    .title-3XlmeX { 
+      line-height: 32px;
+    }
+    
+    button { background: none }
+  }
+  
+  // Voice Connection
+  .container-1zzFcN {
+    display: grid ;
+    padding: 0 ;
+    border: none ;
+    grid-template-columns: 100% ;
+    contain: paint ;
+    
+    // Voice channel info container
+    .connection-3k9QeF {
+      order: 2 ;
+      margin-left: 32px ;
+      padding: 6px 0 ;
+      align-items: unset ;
+      
+      // Ping / "Connected"
+      .rtcConnectionStatus-c5A6Av {
+        padding: 1px 0 2px 0 ;
+      }
+      
+      // Buttons container
+      .button-12Fmur {
+        background: none ;
+        
+        // Noise Suppression Btn
+        &:first-child { display: none }
+      }
+    }
+    
+    // Connected users container
+    .voiceUsers-3gPcwY {
+      height: 30px ;
+      padding: 3px 8px ;
+      margin: 0 ;
+      box-sizing: border-box ;
+      order: 3 ;
+      
+      &::-webkit-scrollbar { display: none }
+      
+      ~ .actionButtons-2vEOUh:after {
+        bottom: 42px ;
+      }
+    }
+    
+    // Voice channel button container
+    .actionButtons-2vEOUh {
+      display: inline-flex ;
+      height: 0 ;
+      padding: 0 ;
+      justify-content: space-evenly ;
+      overflow: hidden ;
+      transition: .1s linear;
+      align-items: center ;
+      
+      // Caret icon
+      &:after {
+        content: "<" ;
+        position: absolute ;
+        display: flex ;
+        width: 200px;
+        height: 32px ;
+        left: 0 ;
+        bottom: 12px ;
+        justify-content: center ;
+        align-items: center ;
+        color: var(--interactive-normal);
+        font-size: 18px ;
+        font-weight: 700 ;
+        transform: rotate(90deg) translate(6px, 100px - 16px);
+      }
+      
+      &:hover {
+        height: 44px ;
+        
+        &:after {
+          content: ">" ;
+          color: var(--interactive-hover);
+        }
+      }
+      
+      // Buttons container
+      .button-1EGGcP {
+        width: max-content ;
+        padding: 0 12px ;
+        background: none ;
+        color: var(--interactive-normal);
+        z-index: 1 ;
+        
+        &:not(.fauxDisabled-8w0hCZ):hover {
+          color: var(--interactive-hover);
+        }
+      }
+    }
+  }
+}
+
+
+// -- Members list 
+.members-3WRCEx {
+  &::-webkit-scrollbar { display: none }
+  
+  // Role header
+  .membersGroup-2eiWxl { 
+    margin-bottom: 4px;
+    font-weight: 600 ;
+   }
+  
+  // Member
+  .member-2gU6Ar {
+    margin: 0 0 0 11px ;
+    background: none ;
+    
+    // Inner container 
+    .layout-1qmrhw {
+      border-radius: 0 ;
+      background: none ;
+      border-right: 3px solid transparent ;
+      
+      &:hover { 
+        border-color: var(--interactive-hover) ;
+        background-color: var(--background-modifier-hover) ;
+      }
+    }
+    
+    // User popout open
+    &.selected-1-Z6gm .layout-1qmrhw {
+       border-right: 3px solid var(--interactive-hover);
+    }
+    
+    // Offline member
+    &.offline-22aM7E:not(:hover) .avatar-31d8He{
+      filter: grayscale(100%);
+      border-radius: 50% ;
+    }
+    
+    // Nitro icon 
+    .name-3Vmqxm + div { pointer-events: none }
+    
+    .ownerIcon-255uKo {
+      color: var(--header-secondary);
+    }
+  }
+
+  // Preload dummys
+  .placeholder-38d3Iv, .memberGroupsPlaceholder-9tqX9V {
+    animation: none ;
+  }
+  .placeholderAvatar-1qAcRZ, .placeholderUsername-3iQi_D, .memberGroupsPlaceholder-9tqX9V {
+    background: var(--text-normal);
+    opacity: 0.1;
+  }
+  
+  // Empty members list (Threads)
+  > div {
+    background: none ;
+  }
+}
+
+
+// -- Discovery Sidebar
+.discoverHeader-1vsvZ0 {
+  
+  ~ .categoryItem-Kc_HK_ .itemInner-3e_4G4 {
+    border-radius: 0 ;
+    padding: 0 4px ;
+    margin: 5px 4px ;
+  }
+  
+  ~ .categoryItem-Kc_HK_ {
+    
+    .itemInner-3e_4G4 {
+      border-radius: 0 ;
+      padding: 0 4px ;
+      margin: 5px 4px ;
+    }
+    
+    &:hover .itemInner-3e_4G4 { border-left: 3px solid var(--interactive-hover) }
+    
+    &.selected-1-Z6gm .itemInner-3e_4G4 {
+      background-color: transparent ;
+      border-left: 3px solid var(--interactive-hover) ;
+    }
+  }
+}
+
+
+// -- Discovery Content
+.sidebar-1tnWFu ~ .pageWrapper-2PwDoS > .scroller-3j5xK2 { @include scrollbar() }
+
+
+// Server boost screen (community server)
+.wrapper-WLdlSO {
+  background: none ;
+  
+  // "back to server"
+  .navigationBar-2Z_P4D {
+    background: none ;
+  }
+  
+  // Head banner
+  .hero-3xEZXe {
+    background: none ;
+  }
+  
+  // "compare plans" table
+  .perksTable-H9sPBm {
+    pointer-events: none ;
+    
+    .perksTableRowHeading-jY6XJu .perksTableRowLabel-wyBuZr {
+      visibility: hidden ;
+    }
+  }
+}
+
+
+// Home channel content
+.homeContainer-r4Hvv1 {
+ 
+  // Info Top
+  .widgets-37sQdc {
+
+    // inner container
+    .container-2Hi7Km {
+      background: none ;
+    }
+
+    // Widgets
+    .container-xwOzwi, .emptyStateContainer-xWOMPJ {
+      background: none ;
+    }
+
+    // Channels
+    .container-3HMTms {
+      background: var(--background-modifier-hover) ;
+      border: none ;
+
+      &:hover {
+        background: var(--background-modifier-selected) ;
+      }
+    }
+  }
+
+  // Top message container
+  .container-4HqGB3 {
+    background: none ;
+  }
+
+  .card-3x20HF {
+    background: var(--background-modifier-hover) ;
+    border: none ;
+
+    &:hover {
+      background: var(--background-modifier-selected) ;
+    }
+
+    // load Dummys 
+    .wrapper-15CKyy {
+      background: none ;
+    }
+  }
+}
+
+// -> Channel & Roles
+// Header
+.header-3xB4vB {
+  // return to last channel btn
+  .returnButton-1xn3Ii {
+    border: none;
+    background: none;
+
+    // BTn text
+    .defaultColor-1EVLSt {
+      color: var(--interactive-normal);
+    }
+
+    // Icon within text
+    .iconContainer-21RCa3 { display: none }
+
+    // Text after icon
+    .overflow-1wOqNV {
+      margin-left: 2px ;
+    }
+
+    &:hover {
+      background: none var(--background-modifier-selected);
+
+      .defaultColor-1EVLSt{
+        color: var(--interactive-active);
+      }
+    }
+  }
+}
+
+// Main content
+.container-2IKOsH {
+
+  // Navbar
+  .tabBar-1_P75h {
+
+    .tabBarItem-onx_ng {
+      border: none !important;
+    }
+  }
+
+  // infos & questions
+  .prompt-1sE27N {
+    background: none ;
+
+    .optionButtonWrapper-2lbogO {
+      background: var(--background-modifier-hover) ;
+      border: none ;
+
+      &:hover {
+        background: var(--background-modifier-selected) ;
+      }
+    }
+  }
+
+  // -> Browse channels
+  // Searchbar
+  .search-kg4MrS {
+    background: var(--background-modifier-selected);
+    border-radius: 2px ;
+  }
+
+  // create channel btn
+  .createButton-2BBU0x {
+    border-radius: 2px ;
+
+    @include Btn(var(--background-modifier-selected));
+  }
+  
+  // Channel category
+  .categoryRow-2VIZ6m {
+    .categoryText-35ACGA {
+      color: var(--header-secondary) !important;
+    }
+  }
+
+  // channel item
+  .channelRow-4X_3fi {
+    background: var(--background-modifier-hover) ;
+
+    background: none ;
+
+    &:not(.disabled-3cfocy):hover {
+      // background: var(--background-modifier-selected) ;
+      background: var(--background-modifier-hover) ;
+    }
+
+    .viewChannelButton-59XD70 {
+      display: block;
+
+      @include Btn();
+    }
+  }
+
+  // Checkboxes
+  .checkbox-1LuCGM {
+    background: none !important;
+    border-color: var(--interactive-normal) !important;
+  }
+  // <- Browse channels
+}
+// <- Channel & Roles
+
+// -> Server welcome screen thing
+.content-1SgpWY .main-243VC2 {
+  // Background image
+  .artwork-3uFrhF { display: none }
+
+  // -> Intro
+  .coverContainer-1sBM6d {
+    background: none ;
+  }
+
+  .centerContent-2Awr7N {
+    background: var(--background-tertiary);
+
+    .button-f2h6uQ {
+      @include Btn("background");
+    }
+  }
+  // <- Intro
+
+  // -> Main content
+  .promptContent-1KG8jv {
+
+    .optionButton-1W9f7G {
+      border: none ;
+      background: var(--background-modifier-accent);
+
+      &:hover {
+        background: var(--background-modifier-selected) ;
+      }
+    }
+  }
+  // <- Main content
+}
+// <- Server welcome screen thing

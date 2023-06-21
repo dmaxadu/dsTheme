@@ -1,0 +1,1530 @@
+// * T1.chat v0.1.631
+// Text chat, Voice chat
+
+// Header/Chat sperator line
+.content-1jQy2l::before { display: none }
+
+
+// Inline Mentions
+.mention.wrapper-1ZcZW- {
+  color: var(--Blurple) !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+  white-space: nowrap ;
+
+  &:hover {
+    background-color: var(--Blurple-light) !important;
+    text-decoration: underline ;
+  }
+  
+  .channelIcon-3I2O7O {
+    height: 100% ;
+    box-sizing: border-box ;
+    padding: .15em 0 ;
+  }
+}
+
+
+// - Chat container
+.chatContent-3KubbW {
+  z-index: 101 ; // for "Mark As Read" 
+  width: -webkit-fill-available ; // for search results 
+  
+  // "#" Icon at the channels very top
+  .container-1yy5xN {
+     .emptyChannelIcon-1YdEz2, .iconWrapper-3plkqh { display: none }
+  }
+  
+  // "Mark As Read" and "Jump To Present" 
+  .barBase-3xxDXu {
+    right: 5px ;
+    left: 5px ;
+    background: var(--background-secondary);
+    opacity: 1 ;
+    border-radius: 5px ;
+    padding: 0 ;
+    cursor: auto ;
+    
+    @include shadow_effect("box_2");
+    
+    > button {
+      padding: 0 15px ;
+      color: var(--text-normal) ;
+      
+      &.barButtonMain-2GIx4o {
+        flex: 0 1 auto ;
+        margin-right: auto ;
+      }
+
+      &:hover  {
+        color: var(--interactive-active) ;
+        text-decoration: underline ;
+      }
+    }
+    
+    // "Mark As Read"
+    &.newMessagesBar-1hF-9G {
+      top: -4px ;
+        
+      + .scroller-kQBbkU {
+        margin-top: 24px ;
+      }
+    }
+  }
+
+  // "This channel is not on your channel list" bar
+  .chatHeaderBar-31g1mU {
+    padding: 4px 8px ;
+    margin: 0 4px ;
+    background: var(--background-secondary);
+    border-radius: 5px ;
+
+    @include shadow_effect("box_2");
+
+    .button-f2h6uQ {
+      @include Btn();
+    }
+  }
+
+  // Messages scroller
+  .scroller-kQBbkU {
+    // fading out at top and bottom, not sure if like that tho
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 3%, #000 96%, transparent);
+  }
+  
+  // Messages seperator
+  .divider-IqmEqJ {
+    align-items: unset ;
+    border: none ;
+    margin: 20px 0 !important;
+    
+    // date 
+    .content-3spvdd { 
+      height: fit-content ;
+      transform: translateY(-50%);
+      background: none ;
+    }
+    
+    // seperator lines
+    &::before, &::after {
+      content: "" ;
+      height: 1px ;
+      width: 100% ;
+      background: var(--background-modifier-accent) ;
+    }
+    
+    // new messages seperator
+    &.isUnread-3Lojb- {
+      &::before, &::after {
+        background: var(--red);
+        opacity: .7 ;
+      }
+      
+      .unreadPill-3nEWYM {
+        top: 0 ;
+        padding: 0 4px ;
+        border-radius: 0 0 4px 4px ;
+
+        path { display: none }
+      }
+    }
+  }
+   
+  // - preload dummys
+  // container
+  .wrapper-3HVHpV {
+    background: none !important ;
+    
+    // messages
+    > .wrapper-15CKyy { background: none !important }
+  }
+}
+
+
+// - Text input
+.form-3gdLxP {
+  margin: 5px 0 0 0 ;
+  padding: 0 ;
+  border-top: 1px solid var(--background-modifier-accent);
+
+  &::before { display: none }
+
+  // Text input container
+  .channelTextArea-1FufC0 {
+    background: none ;
+    margin: 0 ;
+    padding: 0 ;
+    
+    // container 2
+    > .scrollableContainer-15eg7h { background: none }
+
+    // Text input
+    .textArea-2CLwUE { 
+      margin-left: 10px ;
+      width: -webkit-fill-available ;
+    }
+
+    // Input on denied writing permission
+    &.channelTextAreaDisabled-1p2fQv .innerDisabled-2dbG11::after {
+      content: " " ;
+      // background: url("https://i.imgur.com/za6Yq9g.png") ;
+      background: url("https://i.imgur.com/5wEolmc.png") ;
+      position: absolute;
+      right: 0px ;
+      bottom: 0px ;
+      height: 36px ;
+      width: 36px ;
+      background-size: cover ;
+      background-repeat: no-repeat ;
+    }
+    
+    // Reply popout
+    .attachedBars-2BCP3l {
+      background: none ;
+      
+      .replyBar-1oi75v {
+        background: none ;
+        margin-right: 10px ;
+      }
+    }
+  }
+  
+  // Inner container
+  .inner-NQg18Y {
+    overflow: hidden ; // for btns
+  }
+
+  // "Attach file" Button 
+  .attachWrapper-3slhXI {
+    width: 40px ;
+
+    // Seperator line between button and text input
+    &::after {
+      content: "" ;
+      position: absolute ; 
+      top: 5px ;
+      bottom: 5px ;
+      right: 0px ;
+      width: 1px ;
+      background-color: var(--background-modifier-accent) ;
+    }
+
+    // Button
+    .attachButton-_ACFSu {
+      position: absolute;
+      top: 50% ;
+      transform: translateY(-50%) ;
+    }
+  }
+
+  // Typing indicator
+  .typing-2J1mQU {
+    background: transparent ;
+    position: absolute ;
+    top: -14px ;
+    left: -10px ;
+    height: 15px ;
+    padding: 0 5px ;
+    overflow: visible ;
+    pointer-events: none ;
+    line-height: 15px ;
+  }
+
+  // Slowmode icon
+  .cooldownWrapper-2k1jHK {
+    position: absolute ;
+    right: -20px ;
+    bottom: -14px ;
+    height: 16px ;
+    width: 16px ;
+    color: transparent !important;
+    pointer-events: auto ;
+
+    .slowModeIcon-35Psjn {
+      position: absolute ;
+      margin: 0 ;
+
+      path { 
+        fill: var(--interactive-normal) ;
+      }
+    }
+  }
+  
+  // Buttons conatiner
+  .buttons-uaqb-5 { 
+    
+    // Button
+    .button-f2h6uQ { 
+      // align-items: unset ;
+      // height: 44px ;
+    }
+    
+    // btn content
+    .button-3BaQ4X {
+      // align-items: unset ;
+      // box-sizing: content-box;
+      // height: 24px ;
+      // padding: 10px 4px 10px 4px ;
+      
+      svg {
+        opacity: .6 ;
+        filter: brightness(1.5);
+      }
+      
+      &:hover svg { 
+        opacity: .8 ;
+      }
+    }
+
+    // Nitro btn
+    > [aria-label][type] {
+      width: calc(40px * var(--show-nitro-btn));
+      margin-top: calc(-100px * (1 - var(--show-nitro-btn)));
+
+      // Gifs picker
+      + .buttonContainer-2lnNiN {
+        width: calc(40px * var(--show-gif-btn));
+        margin-top: calc(-100px * (1 - var(--show-gif-btn)));
+
+        // Stickers picker
+        + .buttonContainer-2lnNiN {
+          width: calc(36px * var(--show-sticker-btn));
+        margin-top: calc(-100px * (1 - var(--show-sticker-btn)));
+
+          .stickerIcon-3Jx5SE { height: 24px !important }
+
+          // Emoji picker
+          + .buttonContainer-2lnNiN {
+            width: calc(38px * var(--show-emoji-btn));
+        margin-top: calc(-100px * (1 - var(--show-emoji-btn)));
+          }
+        }
+      }
+    }
+    
+    // Buttons
+    // .buttonContainer-2lnNiN {
+      
+    //   // Gifs
+    //   &:nth-last-child(3) {
+    //     width: calc(40px * var(--show-gif-btn));
+    //     margin-top: calc(-100px * (1 - var(--show-gif-btn)));
+    //   }
+      
+    //   // Sticker
+    //   &:nth-last-child(2) {
+    //     width: calc(36px * var(--show-sticker-btn));
+    //     margin-top: calc(-100px * (1 - var(--show-sticker-btn)));
+
+    //     .stickerIcon-3Jx5SE { height: 24px !important }
+    //   }
+      
+    //   // Emojis
+    //   &:nth-last-child(1) {
+    //     width: calc(38px * var(--show-emoji-btn));
+    //     margin-top: calc(-100px * (1 - var(--show-emoji-btn)));
+    //   }
+    // }
+    
+    // Send btn
+    .separator-3ng7S5 .buttonChild-33lB5F {
+      color: var(--interactive-normal);
+      transition: none ;
+      
+      &.activeButtonChild-2hgLAO {
+        color: var(--interactive-hover);
+        
+        &:hover {
+          color: var(--interactive-active);
+        }
+      }
+    }
+  }
+
+  // Emoji button
+  .emojiButton-1fMsf3 {
+    opacity: .6 ;
+
+    &.emojiButtonHovered-s44uQ8 { 
+      opacity: 1 ;
+    }
+  }
+
+  // Chat input replacmnet box (follow channel, complete server setup,..)
+  .wrapper-2SplAX {
+    background: none ;
+
+    .button-cO0-d9 {
+      @include Btn("background");
+    }
+  }
+  
+  // Tips info for text input
+  .applicationCommandEducation-1stoia {
+    bottom: unset ;
+    top: -20px ;
+    left: 5px ;
+    
+    &::-webkit-scrollbar { display: none }
+    
+    // Arrow icon
+    .applicationCommandEducationArrow-2xKDmq { display: none }
+    
+    // Text container
+    .applicationCommandEducationPrompt-23S3d- {
+      display: flex ;
+      flex-direction: row-reverse ;
+      overflow: visible ;
+    }
+    
+    // Dismiss btn
+    .anchor-1MIwyf {
+      margin-right: 10px ;
+    }
+  }
+  
+  // file/upload attachment
+  .channelAttachmentArea-HwpkuQ {
+    
+    &:before {
+      content: "";
+      position: absolute ;
+      top: 0 ;
+      left: 0 ;
+      right: 0 ;
+      height: 100% ;
+      background: var(--background-modifier-hover) ;
+      z-index: -1 ;
+    }
+    
+    // Attachment item
+    .upload-vLbqu- {
+      background: none ;
+      
+      // Btns container
+      .actionBarContainer-2BJ5hs {
+        position: static ;
+        
+        &:hover:after {
+          content: "";
+          position: absolute ;
+          top: 0 ;
+          left: 0 ;
+          right: 0 ;
+          bottom: 0 ;
+          background: var(--background-modifier-hover) ;
+          z-index: -1 ;
+        }
+      }
+      
+      // Btns container inner
+      .actionBar-1ozugS {
+        top: 0 ;
+        right: 0 ;
+        transform: none ;
+      }
+      
+      // Buttons
+      .wrapper-2vIMkT {
+        background: none ;
+        box-shadow: none ;
+      }
+    }
+  }
+}
+
+
+// -> Messages (cozy only for now)
+
+$BG_Embed: var(--background-modifier-selected); // Code blocks, ..
+$BG_Embed-alt: var(--background-secondary-alt); // Inline embeds (Text Spoiler, ..)
+
+.chatContent-3KubbW .message-2CShn3.cozy-VmLDNB {
+  background: none ;
+  padding: 2px 32px 0px 4.125rem !important ;
+  
+  &:hover { 
+    background: none ;
+  }
+  
+  // Highlight border-left (Mention, Clyde, ..)
+  &:before { display: none }
+  
+  // Preview of replied msg
+  .repliedMessage-3Z6XBG { 
+    height: 20px ;
+  }
+  
+  // Message container
+  .contents-2MsGLg { 
+    padding: 0 0 2px 6px ;
+    
+    // Profile image
+    .avatar-2e8lTP { 
+      width: 2.5rem ;
+      height: 2.5rem ;
+      left: 0.8125rem ;
+      margin-top: .125rem ;
+    }
+    
+    // Msg Header (Name, Date, ..)
+    .header-2jRmjb { 
+      padding: 2px 0 ;
+      margin-left: 0 ;
+    }
+  }
+  
+  // File
+  .attachment-1PZZB2 {
+    background: $BG_Embed ;
+    border: none ;
+  }
+  
+  // Code Syntax
+  code {
+    
+    // Comments
+    .hljs-comment {
+      color: var(--interactive-normal);
+    }
+  }
+  
+  // Discord embeds (Server invite, Server Event, ...)
+  .wrapper-1HIH0j {
+    background: $BG_Embed ;
+    
+    .button-2b4VEQ, .button-c6KJnS {
+
+      @include Btn(var(--background-modifier-accent), white);
+    }
+  }
+  
+  // Code block
+  code:not(.codeView-12LUIl, .inline) {
+    background: $BG_Embed ;
+    border: none ;
+  }
+
+  // Build override
+  .wrapper-3-JZ_Z {
+    background: $BG_Embed ;
+  }
+
+  // Audio file 
+  .wrapperAudio-1Bzv_Z {
+    background: $BG_Embed ;
+    border: none ;
+
+    .audioControls-3fmemK {
+      background: $BG_Embed-alt ;
+    }
+  }
+
+  // Gift code
+  .tile-2mmK5T {
+    background: $BG_Embed ;
+
+    .button-f2h6uQ {
+      @include Btn(var(--background-modifier-accent), white);
+    }
+  }
+  
+  // File embed
+  .embedWrapper-1MtIDg {
+    
+    // File content, embed options
+    .textContainer-36wgKK, .footer-GXWBBp {
+      background: $BG_Embed ;
+      border: none ;
+    }
+
+    .textContainer-36wgKK code {
+      background: none ;
+    }
+
+    .footer-GXWBBp {
+      border-top: 1px solid $BG_Embed ;
+    }
+    
+    // File name
+    .attachmentName-vgRpzs {
+      color: var(--header-secondary);
+    }
+    
+    // File size
+    .formattedSize-1YbZww {
+      color: var(--interactive-normal);
+    }
+    
+    // Chnage code language btn
+    .codeIcon-Ni8XUA {
+      color: var(--interactive-normal);
+      cursor: pointer;
+      
+      &:hover {
+        color: var(--interactive-hover);
+      }
+    }
+  }
+  
+  // Full embed
+  .embedFull-1HGV2S {
+    background: $BG_Embed ;
+  }
+  
+  // Inline Code, Text Spoilers
+  code.inline, .spoilerText-27bIiA {
+    background: $BG_Embed-alt ;
+  }
+
+  // Image Spoiler
+  .spoilerContainer-3wsC0k {
+    box-shadow: none ;
+    
+    &.hidden-3B-Rum {
+      background: $BG_Embed ;
+      border-radius: 4px ;
+    }
+    
+    .hiddenSpoilers-19m4Pg {
+      visibility: hidden ;
+    }
+  }
+  
+  // Mention
+  &.mentioned-Tre-dv .contents-2MsGLg{
+    border-left: solid 2px var(--border-mentioned) ;
+    background: var(--background-mentioned) ;
+  }
+  
+  // Clyde (client-side info/error messages)
+  &.ephemeral-2nDdnn .contents-2MsGLg {
+    border-left: solid 2px var(--Blurple) ;
+    background: var(--Blurple-light) ;
+  }
+  
+  // Selected for reply
+  &.replying-eZ7p5z .contents-2MsGLg {
+    border-right: solid 2px var(--header-secondary) ;
+    background: var(--background-modifier-hover) ;
+  }
+  
+  // Reply | &.hasReply-2Cr4KE { }
+  // System Message (msg pinned, user joined server, ..) | 
+  &.isSystemMessage-QNv9ZH {
+    
+    // "Wave to say hi!" btn
+    .welcomeCTA-3GMMRK .button-f2h6uQ {
+      @include Btn("background");
+    }
+  }
+  
+  // Thread
+  &.hasThread-3h-KJV {
+    
+    .container-3i3IzO {
+      background: none ;
+    }
+  }
+  
+  
+  // -> Message Buttons 
+  // Main container / Msg highlight hover effect
+  .buttonContainer-1502pf {
+    position: static ;
+    
+    &:hover:after {
+      content: "";
+      position: absolute ;
+      top: 2px ;
+      left: 5px ;
+      bottom: 0px ;
+      right: 2px ;
+      pointer-events: none ;
+      background: rgba(255, 255, 255, 0.05) ; // black or white ? idk
+    }
+  }
+  
+  &.mentioned-Tre-dv, &.ephemeral-2nDdnn { 
+    .buttonContainer-1502pf:hover:after {
+      right: 32px ;
+    }
+  }
+  // <- Message Buttons 
+  
+  // Btn container
+  .buttons-3dF5Kd { 
+    top: 3px ;
+    padding: 0 1px 0 0 ;
+    
+    // Btn container grid
+    .wrapper-2vIMkT {
+      height: 24px ;
+      background: none ;
+      box-shadow: none ;
+
+      // Button
+      .button-3bklZh {
+        padding: 0 4px ;
+        background: none ;
+      }
+    }
+  }
+  
+  // Btn container on reply Msg
+  &.hasReply-2Cr4KE .buttons-3dF5Kd { 
+    top: 27px ;
+  }
+  
+  // Message Buttons - Concatenating Msg / System Message
+  &:not(.groupStart-3Mlgv1), &.isSystemMessage-QNv9ZH {
+    
+    // Buttons container
+    .wrapper-2vIMkT {
+      height: 32px ;
+      
+      // Button
+      .button-3bklZh {
+        display: none ;
+        padding: 4px ;
+
+        &:last-child {
+          display: flex ;
+        }
+      }
+      
+      &:hover {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25) ;
+        
+        .button-3bklZh {
+          display: flex ;
+          background-color: var(--background-tertiary) ;
+        }
+      }
+    }
+  }
+}
+// Emotes
+.message-2CShn3 {
+  
+  // BD emotes
+  .emotewrapper {
+    margin: 0 ;
+
+    // - Mutli-Emotes
+    .emotetr, .emotebr, .emotebl  {
+      transform: none ;
+    }
+
+    // Top-right, Bottom-right
+    .emotetr, .emotebr {
+      margin-left: -0.25rem ;
+    }
+
+    // Fav emote btn
+    .fav {
+      top: 0 ;
+      right: 0 ;
+      width: .65rem ;
+      height: .65rem ;
+      z-index: 1 ;
+      padding: .1rem ;
+      background-repeat: no-repeat ;
+      background-color: var(--background-secondary) ;
+      background-size: cover ;
+      box-sizing: content-box ;
+
+      @mixin Icon_star ($color:"rgb(124, 125, 126)", $stroke:"rgb(0, 0, 0)", $stroke-width:"1") {
+
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#{$color}" stroke="#{$stroke}" stroke-width="#{$stroke-width}"><path  d="M21.924 8.61789C21.77 8.24489 21.404 8.00089 21 8.00089H15.618L12.894 2.55389C12.555 1.87689 11.444 1.87689 11.105 2.55389L8.38199 8.00089H2.99999C2.59599 8.00089 2.22999 8.24489 2.07599 8.61789C1.92199 8.99089 2.00699 9.42289 2.29299 9.70789L6.87699 14.2919L5.03899 20.7269C4.92399 21.1299 5.07199 21.5619 5.40999 21.8089C5.74999 22.0569 6.20699 22.0659 6.55399 21.8329L12 18.2029L17.445 21.8329C17.613 21.9449 17.806 22.0009 18 22.0009C18.207 22.0009 18.414 21.9369 18.59 21.8089C18.928 21.5619 19.076 21.1299 18.961 20.7269L17.123 14.2919L21.707 9.70789C21.993 9.42289 22.078 8.99089 21.924 8.61789Z"></path></svg>');
+      }
+
+      @include Icon_star() ;
+
+      &.active { 
+        @include Icon_star("rgb(195, 173, 71)");
+
+        &:hover { @include Icon_star("rgba(0,0,0,0") }
+      }
+
+      &:hover { @include Icon_star("rgb(195, 173, 71)",) }
+    }
+  }
+  
+  // BD emote modifier
+  &:hover .emote.stop-animation {
+    
+    // :spin :spin2 :spin3 :1spin :2spin :3spin :flip :flap :pulse :shake :shake2 :shake3 
+    // :tr :bl :br
+    
+    &.emoteflip,.emotespinflip { transform:scaleX(-1) }
+    &.emotespin { animation:1s emote-spin infinite linear }
+    &.emote1spin { animation:1s emote-spin-reverse infinite linear }
+    &.emotespin2 { animation:.5s emote-spin infinite linear }
+    &.emote2spin { animation:.5s emote-spin-reverse infinite linear }
+    &.emotespin3 { animation:.2s emote-spin infinite linear }
+    &.emote3spin { animation:.2s emote-spin-reverse infinite linear }
+    &.emotepulse { animation:1s emote-pulse infinite linear }
+    &.emoteshake { animation:1s emote-shake infinite linear }
+    &.emoteflap { transform:scaleY(-1) }
+    &.emoteshake2 { animation:emote-shake2 .3s linear infinite }
+    &.emoteshake3 { animation:emote-shake3 .1s linear infinite }
+  }
+}
+// Reactions
+.message-2CShn3 .reaction-3vwAF2 {
+  background-color: var(--background-modifier-accent);
+  border: none;
+  border-radius:4px;
+
+  &:hover { 
+    background-color: var(--background-accent) ;
+  }
+
+  // Active reaction 
+  &.reactionMe-1PwQAc {
+    background-color: var(--Blurple-light) ;
+
+    &:hover { 
+      background-color: var(--Blurple-light-hover) ;
+    }
+
+    // number 
+    .reactionCount-26U4As { 
+      color: var(--Blurple) ;
+    }
+  }
+}
+// <- Messages (cozy only for now)
+
+// -> Forum channel
+.container-3wLKDe {
+
+  // -> Search/Create Posts
+  .header-1Uy0p6 {
+    background: var(--background-modifier-accent) ;
+
+    &.headerWithMatchingPosts-1lTrVT {
+      background: var(--background-modifier-selected) ;
+      border-radius: 0 ;
+    }
+
+    // Create new post
+    .submitButton-3B-dZd {
+      @include Btn(var(--background-modifier-accent), white);
+    }
+  }
+
+  .matchingPostsRow-2IiEQ1 {
+    background: var(--background-modifier-selected) ;
+  }
+  // <- Search/Create Posts
+
+  // -> Post Guidelines
+  .container-3arpDl {
+    background: var(--background-modifier-hover) ;
+
+    .descriptionContainer-2ylKGk {
+      background: none ;
+    }
+  }
+  // <- Post Guidelines
+
+  // -> Tags filter
+  .tagsContainer-2bBw1x {
+
+    // Button, Tags
+    .button-f2h6uQ, .tag-19iIl1 {
+      background: var(--background-modifier-accent) ;
+
+      &:hover {
+        background: var(--background-modifier-selected) ;
+      }
+    }
+
+    // Button Text
+    .contents-3ca1mk, .sortDropdownText-3smleu {
+      color: var(--text-normal) !important ;
+    }
+  }
+  // <- Tags filter
+
+  // -> Post item card (list, grid)
+  .container-2qVG6q, .container-1PloNW {
+    border: none ;
+    transform: none ;
+    box-shadow: none ;
+    background: var(--background-modifier-hover) ;
+
+    &:hover {
+      background: var(--background-modifier-selected) ;
+    }
+
+    // Tags
+    .pill-3pRQlO {
+      background: var(--background-modifier-accent) ;
+    }
+
+    // Badge that says "new" 
+    .newBadge-1LcB6t {
+      background: none !important ;
+    }
+
+    // Caard footer (reactions, timestamp, msg count, ..)
+    .footer-3dzxcR {
+
+      // Reactions
+      .reaction-102jx9 {
+        border: none ;
+        background-color: var(--background-modifier-accent);
+        border-radius:4px ;
+
+        &:hover { 
+          background-color: var(--background-accent) ;
+        }
+
+        // Active reaction 
+        &.reactionMe-2zhiyZ{
+          background-color: var(--Blurple-light) ;
+      
+          &:hover { 
+            background-color: var(--Blurple-light-hover) ;
+          }
+      
+          // number 
+          .reactionCount-SWXh9W { 
+            color: var(--Blurple) ;
+          }
+        }
+      }
+    }
+  }
+
+  // Grid 
+  .container-1PloNW {
+
+    // weird gradient
+    .textContentFooter-2JnNv8 {
+      background: none ;
+    }
+
+    .tagPill-1kSbgP {
+      background: var(--background-tertiary);
+    }
+
+    .contentPreview-3fWiuC {
+      border: none ;
+      margin: 0 ;
+    }
+  }
+  // <- Post item card
+
+  // -> Sidebar
+  // .sidebarContainer-1kWKqZ {
+
+  //   .sidebarCard-1Gn1ch, .container-2IhveL {
+  //     background: var(--background-modifier-hover) ;
+  //     border: none ;
+  //   }
+
+  //   // Search tags
+  //   .tags-3s41VI {
+
+  //     // main container
+  //     .pill-3pRQlO {
+  //       background: var(--background-modifier-hover) ;
+
+  //       // Name/text
+  //       .lineClamp1-1iDPU7 {
+  //         color: var(--interactive-normal);
+  //       }
+
+  //       &:hover {
+  //         background: var(--background-modifier-accent) ;
+
+  //         .lineClamp1-1iDPU7 {
+  //           color: var(--interactive-hover);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  // <- Sidebar
+}
+// Forum chat
+.chatContent-3KubbW {
+
+  .container-3YcgdM {
+    background: none ;
+  }
+
+  .divider-AZrXIA { display: none }
+
+  // Follow / copy link to forum post btns
+  .container-3YcgdM {
+    top: 10px ;
+
+    .buttonInner-3aRbcx {
+      border: none ;
+      background: var(--background-floating);
+    }
+  }
+}
+// <- Forum channel
+
+// -> Threads / Voice chat / Forum chat (spilt view / overlay)
+.chatLayerWrapper-2mgEK- {
+  width: 100% ;
+
+  // shadow gradient effect thing idk
+  .chatTarget-3H6mpC { display: none }
+}
+
+// Main wrapper
+.container-3XgAHv {
+  background: none ;
+  border-radius: 0 ;
+
+  // Forum icon
+  .iconWrapper-3FqQ75 {
+    display: none ;
+  }
+
+  // Forum tags
+  .tags-2Siay7 {
+    .pill-3pRQlO {
+      background: var(--background-modifier-accent);
+    }
+  }
+
+  // Reactions, follow btn, "copy link btn
+  .container-3YcgdM {
+    border: none ;
+    box-shadow: none ;
+
+    // not floating
+    &:not(.header-1RJoTb) {
+      .buttonInner-3aRbcx, .addReactButton-3bSQb6, .remainingReactions-gVC95O {
+        background: var(--background-modifier-hover);
+        border: none ;
+  
+        &:hover {
+          background: var(--background-modifier-selected);
+        }
+      }
+    }
+
+    // Reactions
+    .reaction-102jx9 {
+      background-color: var(--background-modifier-accent);
+      border: none;
+      border-radius:4px;
+    
+      &:hover { 
+        background-color: var(--background-accent) ;
+      }
+    
+      // Active reaction 
+      &.reactionMe-2zhiyZ{
+        background-color: var(--Blurple-light) ;
+    
+        &:hover { 
+          background-color: var(--Blurple-light-hover) ;
+        }
+    
+        // number 
+        .reactionCount-SWXh9W { 
+          color: var(--Blurple) ;
+        }
+      }
+    }
+  }
+
+  // weid engagement thing
+  .box-2iMsQm {
+    display: none ;
+  }
+  
+  // Header content seperator line
+  .chat-1-OBC7:before, .chat-1rZYgu:before { display: none }
+  
+  .threadCreatorName-1NFrTx:hover {
+    text-decoration: none ;
+  }
+
+  // Chat 
+  .chat-1-OBC7 {
+    
+    // messages scroller
+    .scroller-kQBbkU {
+      -webkit-mask-image: linear-gradient(to bottom, transparent, #000 2%, #000 98%, transparent);
+    }
+
+    // Text input - slowmode icon
+    .cooldownWrapper-2k1jHK {
+      right: -16px ;
+    }
+  }
+  
+  // Create thread
+  .container-1RZJZM {
+    
+    // Text inputs
+    .channelTextArea-3TZH74, .input-2g-os5 {
+      border-radius: 0 ;
+      background: none ;
+      border: 1px solid var(--background-modifier-accent) !important ;
+    }
+    
+    .channelTextAreaInner-ITp5kW {
+      background: none ;
+      border: none ;
+    }
+  }
+  
+  // Chat in split view with overlapping (Threads + Voice text)
+  &.floating-3M3WeH {
+    margin-top: 1px ;
+    z-index: 1002 ;
+    border: none ;
+    min-width: 400px ;
+    // max-width: 100% ;
+    max-width: calc(100vw - 240px) ; // not ideal
+    resize: horizontal ;
+    direction: rtl;
+
+    @include shadow_effect("box_1");
+  
+    > * {
+      direction: ltr;
+    }
+    
+    // Background image
+    &:before {
+      content: "";
+      position: absolute ;
+      height: 100% ;
+      width: 100% ;
+      background: var(--Main_Background) rgba(0, 0, 0, .1);
+      background-blend-mode: overlay ;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      filter: var(--BGM_Blur) var(--BGM_Brightness) ;
+    }
+  }
+}
+
+// Threads "unarchive" bar
+.chatHeaderBar-2fUORh {
+  margin: 0 5px ;
+  background: var(--background-secondary);
+  border-radius: 5px ;
+  padding: 6px 10px ;
+
+  @include shadow_effect("box_2");
+
+  .chatHeaderBarButton-3q1QVr {
+    background: none !important;
+    color: var(--interactive-normal) !important;
+    font-weight: 600 ;
+    font-size: 15px ;
+
+    &:hover {
+      color: var(--interactive-hover) !important;
+    }
+  }
+}
+// <- Threads / Voice chat / Forum chat (spilt view / overlay)
+
+// - Voicecall view
+.callContainer-HtHELf {
+  --aswc: var(--always-show-voicecontrols, 0);
+
+  .root-22AK9z {
+    margin: calc(var(--aswc) * 48px) 0 calc(var(--aswc) * 56px) 0 ;
+    height: calc(100% - (var(--aswc) * (48px + 56px)));
+  }
+
+  // player popped out
+  .root-1Emen5 {
+    background: none ;
+  }
+  
+  // -> Buttons
+  // always show controls/btns 
+  .idle-39sGPO {
+    .controlSection-1mNixL, .chatButton-10jXXp {
+      opacity: var(--aswc) !important ;
+    }
+  }
+  
+  // Buttons container
+  .videoControls-353CsJ { 
+    inset: calc(var(--aswc) * -48px) 0 calc(var(--aswc) * -56px) 0 ;
+    padding: 0 16px 0 16px ;
+    
+    // Top and bottom section
+    .controlSection-1mNixL {
+      transform: translateZ(0) ;
+      
+      .streamQualityIndicator-n62BFt { display: none }
+    }
+  }
+  
+  // Open voice chat btn 
+  .chatButton-10jXXp {
+    transform: translateZ(0) !important ;
+    top: calc(12px + var(--aswc) * -48px);
+    
+    .controlIcon-10O-4h {
+      color: var(--interactive-normal);
+      
+      &:hover {
+        color: var(--interactive-hover);
+      }
+    }
+  }
+  
+  // Controls (bottom) (trash)
+  .bottomControls-31YuPK {
+    
+    // Group container
+    .flex-2S1XBF {
+      margin: 0 ;
+    }
+    
+    // Icons
+    .controlIcon-10O-4h { 
+      color: var(--interactive-normal) ;
+    }
+    
+    // Icons hover
+    .button-f2h6uQ:hover .controlIcon-10O-4h { 
+      color: white ;
+    }
+
+    .colorable-3rVGna.red-3T8maV .controlIcon-10O-4h { 
+      color: var(--status-red-500);
+    }
+    
+    // Centerd row btns
+    .centerButton-1IShs7 {
+      padding: 8px 5px ;
+      margin: 8px 5px ;
+      background: none ;
+      
+      &.controlButton-2PMNom { 
+        margin: 8px 16px ;
+      }
+    }
+    
+    // Btn dropdownmenu
+    .contextMenuNub-NuTZ_U {
+      color: white ;
+      background-color: var(--background-secondary) ;
+      
+      &:hover {
+        background-color: var(--background-tertiary) ;
+      }
+    }
+
+
+    // btn for context menu
+    .contextMenuNub-NuTZ_U { 
+      bottom: 5px ;
+    }
+  }
+  
+  // Gradient effect on hover
+  .gradientContainer-phMG8d { display: none }
+  // <- Buttons
+
+  @mixin TileOverlay() {
+    // Non video tile card
+    .overlayContainer-1suEh7:not(.videoWrapper-3rtb_V ~ .overlayContainer-1suEh7) {
+
+      .overlayTitle-2efoIF, .status-15kcmy {
+        opacity: 1 ;
+        background: none ;
+      }
+    }
+
+    // video
+    .videoWrapper-3rtb_V ~ .overlayContainer-1suEh7 {
+      opacity: 0 ;
+
+      &:hover {
+        opacity: 1 ;
+      }
+    }
+  }
+
+  // -> Itemcard / Tile
+  .tile-2Dr6M1 {
+
+    @include shadow_effect("box_2");
+
+    // stream quality / live indicator
+    .indicators-7iWi8t { display: none }
+
+    // Background color
+    .background-L8lGH6 {
+      // background: var(--background-tertiary) !important ;
+    }
+
+    // Avatar
+    .avatarWrapper-24Rbpj {
+      
+      foreignObject {
+        mask: none ;
+        overflow: visible ;
+      }
+      
+      svg {
+        overflow: visible ;
+      }
+      
+      // Profile image
+      .avatar-b5OQ1N {
+        border-radius: 7.5% ;
+        
+        &:not([src*=".gif"]) { @include shadow_effect("drop_1") }
+      }
+    }
+  }
+  // <- Itemcard / Tile
+
+  // "invite people" empty card
+  .tile-2TcwiO {
+    background: none ;
+  }
+
+  // -> Focus view
+  .root-2f-lk1 {
+    padding: 0 8px ;
+    box-sizing: border-box ;
+
+    // Main frame top
+    .videoFrame-11rde6 {
+      // @include TileOverlay();
+
+      // hide members btn
+      .participantsButton-1WBdFP {
+        background: var(--background-accent);
+        // background: var(--background-floating);
+      }
+    }
+
+    // Secondary Tiles
+    .participantsWrapperAnimated-2Wdxe1 {
+      overflow: visible ;
+
+      .overlayContainer-1suEh7 {
+        // opacity: 0 ;
+
+        &:hover {
+          // opacity: 1 ;
+        }
+      }
+    }
+  }
+  // <- Focus view
+
+  // -> Grid view
+  .videoGridWrapper-2WpXPj {
+
+    .videoGrid-1tZm-F::-webkit-scrollbar { display: none }
+
+    // Cards main container
+    .tile-3GyaDQ {
+      padding: 4px ;
+      box-sizing: border-box ;
+    }
+
+    .tile-2Dr6M1 {
+
+      // @include TileOverlay();
+    }
+  }
+  // <- Grid view
+  
+  // OLD
+  // User cards in voice
+  // .tile-2Dr6M1  {
+    
+  //   // Issue with new activities
+  //   @include shadow_effect("box_2");
+    
+  //   .indicators-7iWi8t {
+  //     left: 0px ;
+      
+  //     // "live" icon
+  //     .liveIndicator-2HaEDu { display: none }
+      
+  //     // stream quality transition container
+  //     .streamQualityIndicator-1QvbXd > div {
+  //       transform: none !important ;
+  //     }
+      
+  //     // stream quality
+  //     .liveQualityIndicator-8fb_DX {
+  //       background: var(--background-primary) !important ;
+  //       border-radius: 8px ;
+  //     }
+  //   }
+    
+  //   // Stream preview image in user card
+  //   .streamPreview-3Fo29Y {
+      
+  //     .cta-3-AFNF {
+  //       background: var(--background-primary) !important ;
+  //       margin-bottom: 20px ;
+  //     }
+  //   }
+    
+  //   .streamPreview-3Fo29Y .image-1YnNzZ {
+  //     padding-bottom: 20px ;
+  //     box-sizing: border-box ;
+  //   }
+    
+  //   // - Normal (no stream) user
+  //   // Background
+  //   .background-L8lGH6 {
+  //     background: var(--background-tertiary) !important ;
+      
+  //     padding-bottom: 25px ;
+  //     box-sizing: border-box ;
+  //   }
+    
+  //   // Prfile image container
+  //   .avatarWrapper-24Rbpj {
+      
+  //     foreignObject {
+  //       mask: none ;
+  //       overflow: visible ;
+  //     }
+      
+  //     svg {
+  //       overflow: visible ;
+  //     }
+      
+  //     // Prfile image
+  //     .avatar-b5OQ1N {
+  //       border-radius: 7.5% ;
+        
+  //       &:not([src*=".gif"]) { @include shadow_effect("drop_1") }
+  //     }
+  //   }
+    
+  //   // Overlay container
+  //   .overlay-2RIWoZ {
+  //     position: absolute ;
+  //     padding: 0 ;
+  //     top: 0 ;
+  //     left: 0 ;
+  //     right: 0 ;
+  //     bottom: 0 ;
+  //     align-items: flex-end ;
+  //   }
+    
+  //   // User name container
+  //   .overlayTitle-2efoIF {
+  //     width: 100% ;
+  //     margin-right: 0 ;
+  //     padding: 2px 6px ;
+  //     background: var(--background-secondary-alt) ;
+  //     border-radius: 0 ;
+      
+  //     // User name
+  //     .overlayTitleText-3xOA3Q {
+  //       width: 100% ;
+  //       text-align: center ;
+  //     }
+      
+  //     &.idle-3MGs7O {
+  //       opacity: 1 ;
+  //     }
+  //   }
+    
+  //   // User status container
+  //   .statusContainer-2yJ1oM {
+  //     position: absolute ;
+  //     top: 5px ;
+  //     right: 5px ;
+      
+  //     // User status
+  //     .status-15kcmy {
+  //       background: none ;
+  //     }
+  //   }
+  // }
+}
+
+// Resizer for voice text and threads in side by side mode
+.chatTarget-3H6mpC.notFloating-cIl-vp + .resizeHandle-PBRzPC {
+  position: relative ;
+  width: 7px ;
+  background: none ;
+
+  &::after {
+    content: "";
+    display: block ;
+    position: absolute ;
+    top: 0 ;
+    left: 3px ;
+    width: 1px ;
+    height: 100% ;
+    background-color: var(--background-modifier-accent);
+  }
+}
+
+// - Stage view
+.callContainer-BGIngG {
+  
+  // black gradiant effect
+  .gradientContainer-phMG8d {
+    background: none ;
+  }
+  
+  .auto-1QyTTa {
+    @include scrollbar();
+  }
+  
+  // Speaker
+  .rowContainer-jDvyA4 {
+    
+    .background-L8lGH6 {
+      background: none !important ;
+    }
+  }
+  
+  // Audience
+  .participants-3hk3ND {
+    background: none ;
+    
+    // User
+    .tileContainer-Os085F {
+      background: none ;
+      
+      &:hover {
+        background: var(--background-modifier-hover) ;
+      }
+      
+      .avatar-rC0Atp {
+        background: none ;
+      }
+    }
+  }
+}
+
+
+// Stage view talk requests sidebar
+.container-lqPArA {
+  background: none ;
+  
+  .headerContainer-21E-jZ {
+    box-shadow: none ;
+  }
+}

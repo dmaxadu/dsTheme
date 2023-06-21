@@ -1,0 +1,308 @@
+// * T1.settings v0.1.31
+// Client / Guilds / Channels
+
+// -> Theme version info
+.layer-86YKbF:not(.baseLayer-W6S8cY) .socialLinks-3ywLUf + .info-3pQQBb:before {
+  content: "T1 - Theme: \a v#{$T1_version} by Eight_P" !important;
+  display: block !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: rgb(114, 118, 125) !important;
+  white-space: break-spaces !important;
+  margin-bottom: 16px !important;
+  text-transform: none !important;
+}
+// <- Theme version info
+
+
+// -> General Settings
+.layer-86YKbF:not(.baseLayer-W6S8cY) {
+  
+  // -> Sidebar
+  .sidebarRegionScroller-FXiQOh {
+
+    &::-webkit-scrollbar { display: none }
+    
+    // category headers
+    .header-2Kx1US {
+      color: var(--header-primary) ;
+      opacity: .8 ;
+    }
+    
+    // Tab name
+    .item-2GWPIy {
+      color: var(--interactive-normal) ;
+      background: none !important ;
+      border-radius: 0  ;
+      padding: 0 10px ;
+      margin: 6px 0 ;
+      
+      &:hover { color: var(--interactive-hover) }
+      
+      &.selected-1sf9UK {
+        border-left: 2px solid var(--interactive-active) ;
+        color: var(--interactive-active)  ;
+      }
+    }
+
+    // Nitro upsell "offer", "free month"
+    .offerBadge-1KDtMz, .premiumTrialBadge-pEqntF { display: none }
+  }
+  // <- Sidebar
+  
+  // -> Content region
+  .contentRegionScroller-2_GT_N {
+    
+    @include scrollbar() ;
+  }
+
+  // Checkbox item list option
+  .item-1TA5qI {
+    background: var(--background-modifier-accent) ;
+    
+    &[aria-checked="true"] {
+      background: var(--background-modifier-selected) ;
+    }
+    
+    &[aria-checked="false"]:hover {
+      background: var(--background-modifier-hover) ;
+    }
+  }
+
+  // Nitro upsell in Profile settings
+  #profile-customization-tab {
+    .upsellOverlayContainer-3NMgTS, .tryItOutSection-W9qeGH {
+      display: none ;
+    }
+  }
+
+  // <- Content region
+
+
+  // .sidebar-nqHbhN .item-2GWPIy .ö{
+  //   padding: 0 ;
+
+  //   &:has(+ .item-2GWPIy.selected-1sf9UK) {
+  //     margin-bottom: 12px ;
+  //   }
+
+  //   &.selected-1sf9UK {
+  //     display: contents ;
+
+  //     &::after {
+  //       position: absolute ;
+  //       display: block ;
+  //       top: 15px ;
+  //       left: 150px ;
+  //     }
+
+  //     &[aria-controls]::after {
+  //       content: attr(aria-controls);
+  //     }
+
+  //     &[aria-label]::after {
+  //       content: attr(aria-label);
+  //     }
+  
+  //     & + .item-2GWPIy {
+  //       margin-top: 12px ;
+  //     }
+
+  //     & + .separator-2N511j {
+  //       margin-top: 14px ;
+  //     }
+
+  //     .background-Gjdjzm { display: none }
+  //   }
+  // }
+
+  // Exit settings btn
+  // .toolsContainer-25FL6V {
+  //   position: absolute ;
+  //   top: 12px ;
+  //   left: -218px + 30px ;
+  //   padding: 0 ;
+  //   margin: 0 ;
+
+  //   z-index: 2 ;
+
+  //   // "ESC" text
+  //   .keybind-13vtq8 { display: none }
+  // }
+}
+// <- General Settings
+
+// -> Server settings
+// Roles
+.layer-86YKbF:not(.baseLayer-W6S8cY) {
+  
+  // Default permission button
+  .container-3EtAkD { background: none }
+  
+  // - Edit Role
+  .contentColumn-1C7as6 > .page-15bX59 {
+    
+    // Sidebar container main
+    .sidebar-3K3Z4C {
+      height: fit-content;
+    }
+    
+    // Roles list Sidebar
+    .list-1AJFv_::-webkit-scrollbar { display: none }
+    
+    // Left side main content container
+    .contentContainer-3hXFtK {
+      border-right: 12px solid var(--scrollbar-auto-track) ;
+      
+      .scrollerBase-1Pkza4 {
+        margin-right: -12px ;
+      }
+    }
+    
+    // Header container "Manage Members"
+    .headerContainer-7V7BBm {
+      right: 0 ;
+    }
+    
+    // Header 
+    .header-JUTO-g {
+      padding: 0 0 24px 0 ;
+      margin: 0 ;
+      box-shadow: none ;
+      
+      &:before {
+        content: "";
+        position: absolute ;
+        height: 100% ;
+        width: 100% ;
+        background: var(--Main_Background);
+        background-position: center;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        filter: var(--BGM_Blur) var(--BGM_Brightness) ;
+      }
+      
+      // Nav bar buttons
+      .tabBarItem-3nPo4Z {
+        border: none ;
+      }
+
+      // Add member btn
+      .addButton-1SxhVs { @include Btn("background") }
+    }
+
+    // Content scroller "Permissions"
+    .permissionsWrapper-34gbP6 {
+      margin-top: 16px ;
+    }
+
+    // linked roles config container
+    .container-2s0jpP {
+      background: none ;
+    }
+    
+    // Info on Bot roles
+    .warning-RBGtx2 {
+      position: absolute ;
+      top: 49px ;
+      left: 0px ;
+      width: auto ;
+      background: none ;
+      border: none ;
+      padding: 0 ;
+      z-index: 100 ;
+
+      .text-2iTkaw {
+        display: none ;
+      }
+
+      &:hover .text-2iTkaw {
+        display: block ;
+        background: var(--background-tertiary) ;
+        border: 1px solid var(--info-warning-foreground) ;
+        padding: 10px ;
+      }
+
+      ~ .tabBar-3DfKkN {
+        margin-left: 40px ;
+      }
+    }
+  }
+}
+// <- Server settings
+
+// -> App Directory
+.layerContainer-2lfOPe .directoryModal-YJsOMv {
+  &::before {
+    content: "";
+    display: block ;
+    position: fixed ;
+    top: 0 ;
+    left: 0 ;
+    height: 100% ;
+    width: 100% ;
+    background: var(--Main_Background) ;
+    background-size: cover !important ;
+    background-attachment: fixed !important ;
+    background-position: center !important ;
+    filter: var(--BGM_Blur) var(--BGM_Brightness) ;
+  }
+
+  // -> Home main items
+  .card-2xymMp, .container-SidGiM {
+    background: var(--background-modifier-selected) ;
+  }
+
+  // clickable
+  .category-2OvQ93,  .container-2NdZr9 {
+    background: var(--background-modifier-accent) ;
+
+    &:hover {
+      background: var(--background-modifier-selected) ;
+    }
+  }
+  // <- Home main categories
+
+  // -> Search
+  .search-2RHhW6 {
+    background: var(--background-modifier-selected) !important;
+    box-shadow: none ;
+    border: none ;
+    border-bottom: 1px solid transparent ;
+    
+    &:focus, &:focus-within {
+      background: var(--background-modifier-hover) !important ;
+      border-bottom-color: var(--header-secondary) ;
+      border-radius: 0 ;
+    }
+  }
+  // <- Search
+
+  // -> App view
+  // Commands
+  .commandList-35zQ3p {
+    background: none ;
+
+    .commandName-SDgdgz {
+      background: var(--background-modifier-selected) ;
+      border: none ;
+    }
+  }
+
+  // App category
+  .category-3LanTP {
+    @include Btn("background");
+  }
+
+  // App support server
+  .card-sX105p {
+    background: var(--background-modifier-accent) ;
+
+    &:hover {
+      background: var(--background-modifier-selected) ;
+    }
+  }
+  // <- App view
+}
+// <- App Directory

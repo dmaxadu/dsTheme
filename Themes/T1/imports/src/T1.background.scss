@@ -1,0 +1,93 @@
+// * T1.background v0.2.34
+// Background image + Transparency
+
+// Main background image
+#app-mount::before {
+  content: " " ;
+  position: absolute ;
+  top: 0 ;
+  left: 0 ;
+  display: block ;
+  height: 100vh ;
+  width: 100vw ;
+  background: var(--Main_Background) ;
+  background-size: cover !important ;
+  background-attachment: fixed !important ;
+  background-position: center !important ;
+  filter: var(--BGM_Blur) var(--BGM_Brightness) ;
+}
+
+$Classes: (
+  // #app-mount
+  "",
+  // BG elm
+  ".bg-1QIAus",
+  // App containers
+  ".app-2CXKsg", ".layer-86YKbF",
+  // App containers canary
+  ".app-2CXKsg", ".layer-86YKbF",
+  // Voice-chat view
+  ".stageSection-3mAD8V",
+  // Text chat
+  ".chat-2ZfjoI", ".chatContent-3KubbW",
+  // Voicecall view
+  ".callContainer-HtHELf",
+  // Forum channel
+  ".container-3wLKDe",
+  // Channel & Roles
+  ".container-2IKOsH",
+  // Stage view
+  ".container-cH6QoY", ".callContainer-BGIngG",
+  ".scroller-35tvpe", ".container-3r7mfc", ".rowContainer-jDvyA4",
+  // Sidebar
+  ".sidebar-1tnWFu",
+  // Sidebar container for Discord info stuff
+  ".container-3O_wAf",
+  // Server channels container
+  ".container-1NXEtd",
+  // Members list
+  ".container-2o3qEW",
+  // Sidebar Panels 
+  ".panels-3wFtMD",
+  // User profile container, Voice channel, Activity
+  ".container-YkUktl", ".container-1zzFcN", ".activityPanel-9icbyU",
+  // DMs Sidebar
+  ".privateChannels-oVe7HL",
+  // Home Friends list
+  ".sidebar-1tnWFu ~ .container-2cd8Mz",
+  // Nitro store
+  ".applicationStore-2nk7Lo",
+  // Discovery
+  ".pageWrapper-2PwDoS",
+  // Friends Activity Sidebar
+  ".nowPlayingColumn-1eCBCN",
+  ".nowPlayingColumn-1eCBCN > .container-1oAagU",
+  ".nowPlayingColumn-1eCBCN > .emptyCard-KDifrB",
+  ".nowPlayingSidebar-2OFn0o",
+  ".nowPlayingSidebar-2OFn0o > .container-1oAagU",
+  ".nowPlayingSidebar-2OFn0o > .emptyCard-KDifrB",
+  // Pretty much every scroller
+  ".app-3xd6d0 .scrollerBase-1Pkza4",
+  // Members list
+  ".container-2Oqvgx", ".members-3WRCEx", ".members-3WRCEx .content-2a4AW9",
+  // Settings
+  ".layer-86YKbF .standardSidebarView-E9Pc3j",
+  ".layer-86YKbF .contentRegion-3HkfJJ",
+  // Roles Settings
+  ".page-15bX59 .titleContainer-3fPic2",
+  // Channel Settings (Permissions)
+  ".card-2EUiNF", ".settingCard-xZSDjS", ".cardFolder-3H4uH4",
+  // Voice-chat view
+  ".wrapper-1gVUIN",
+  // Title bar
+  ".container-ZMc96U",
+  // GM store
+  "#gm-settings-inject",
+);
+
+
+@each $class in $Classes { #app-mount #{$class} { background: none } }
+
+body { background: none }
+
+

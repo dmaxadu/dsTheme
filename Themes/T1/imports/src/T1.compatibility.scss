@@ -1,0 +1,263 @@
+// * T1.compatibility v0.1.41
+// Compatibility with plugins
+
+
+// - Hide Channels by Farcrada (v2.2.2)
+// - FriendNotifications by DevilBro (v1.8.3)
+// - ReadAllNotificationsButton by DevilBro (v1.7.1)
+// - SpotifyControls by DevilBro (v1.2.7)
+// - CollapsibleUI by programmer2514 (v5.7.0)
+// - ChannelDms by Strencher (v1.2.3)
+// - MemberCount by Arashiryuu (v2.2.17)
+// - GuildProfile by Marmota (Jaime Filho) (v1.6.6)
+
+
+// -> Hide Channels by Farcrada
+// Show/Hide btn
+#toggleChannels {
+  filter: brightness(.6) ;
+  margin-right: 6px ;
+  
+  &.channelsHidden { filter: brightness(.8) }
+  
+  &:hover { filter: brightness(1) }
+}
+
+// Server channel sidebar
+.sidebar-1tnWFu {
+  transition: none !important ;
+  
+  // Sidebar hidden
+  &.hideChannelElement + div {
+    
+    // Headerbar: chat, friendslist
+    .title-31SJ6t, .container-ZMc96U {
+      margin-left: 240px ;
+      width: auto ;
+
+      // Channel name
+      .title-17SveM { 
+        display: flex ;
+      } 
+    }
+  }
+}
+// <- Hide Channels by Farcrada
+
+
+// -> FriendNotifications by DevilBro
+// Online friend counter
+.guilds-2JjMmN .friendsOnlineWrap-0gZ63m {
+  display: flex !important ;
+  position: absolute ;
+  transform: rotate(90deg) translateX(-50%) ;
+  transform-origin: bottom left ;
+  top: 60px ;
+  left: 2px ;
+
+  > .label-2wRs_g {
+    color: var(--text-normal);
+    @include shadow_effect("server_1");
+  }
+}
+// <- FriendNotifications by DevilBro
+
+
+// -> ReadAllNotificationsButton by DevilBro
+// "Read all" btn
+.guilds-2JjMmN .frame-oXWS21 {
+  display: flex !important ;
+  position: absolute ;
+  top: 0 ;
+  left: -15px ;
+  z-index: 1 ;
+
+  &, * { height: 20px ; width: 20px  }
+
+  .childWrapper-1j_1ub {
+    color: transparent ;
+    background: none ;
+    transform: rotate(90deg);
+    text-align: center ;
+
+    // "R" Icon
+    &:before {
+      content: "R" ;
+      position: absolute ;
+      top: 0 ;
+      left: 0 ;
+      height: 20px ;
+      width: 20px ;
+      line-height: 20px ;
+      color: var(--header-secondary) ;
+      font-size: 18px ;
+      font-weight: 700 ;
+
+      @include shadow_effect("drop_1");
+    }
+
+    // Tooltip on hover
+    &:hover::after {
+      content: "read all" ;
+      position: absolute ;
+      top: -10px ;
+      left: 25px ;
+      padding: 8px 12px ;
+      font-size: 16px ;
+      font-weight: 600 ;
+      line-height: 10px ;
+      background: var(--background-tertiary) ;
+      color: var(--text-normal) ;
+      border-radius: 5px ;
+      white-space: nowrap ;
+
+      @include shadow_effect("box_2");
+    }
+  }
+}
+// <- ReadAllNotificationsButton by DevilBro
+
+
+// -> SpotifyControls by DevilBro
+// Sidebar control panel
+.panels-3wFtMD .container-6sXIoE { 
+  margin: 0px ;
+  min-height: 44px ;
+
+  .button-12Fmur { background: none }
+}
+// <- SpotifyControls by DevilBro
+
+
+// -> CollapsibleUI by programmer2514
+// Serverbar when hidden
+.guilds-2JjMmN {
+  
+  &[style*="transition: width"] {
+    transition: width 0s !important ;
+  }
+  
+  &[style*="width: 0px;"] {
+    height: 0px ;
+    
+    // Home search, Server settings
+    + .base-2jDfDU {
+      .searchBar-3TnChZ, .container-1-ERn5 {
+        display: none ;
+      }
+    }
+  }
+}
+
+// Channel list sidebar when hidden
+.sidebar-1tnWFu[style*="width: 0px;"] {
+
+  ~ .container-2cd8Mz .container-ZMc96U, ~ .chat-2ZfjoI .title-31SJ6t {
+    margin-left: 240px ;
+    width: auto ;
+
+    // Channel name
+    .title-17SveM { 
+      display: flex ;
+    } 
+  }
+}
+// <- CollapsibleUI by programmer2514
+
+
+// -> ChannelDms by Strencher
+// Server members/dms sidebar
+#app-mount .ChannelDms-channelmembers-wrap {
+  
+  // Nav header
+  .ChannelDms-channelmembers-header {
+    background: none ;
+    border: none ;
+    
+    .item-3XjbnG {
+      background: none ;
+    }
+  }
+  
+  .privateChannels-oVe7HL {
+    top: unset ;
+    margin-bottom: unset ;
+  }
+  
+  // Home search (reverse)
+  .searchBar-3TnChZ {
+    // reverse T1
+    position: relative;
+    width: unset;
+    right: unset;
+    bottom: unset;
+    padding: unset;
+    
+    // additional
+    height: 32px;
+    box-shadow: none ;
+    margin: 5px ;
+    
+    &:hover {
+      background: var(--background-modifier-hover) ;
+    }
+  }
+}
+
+// Dm popouts
+#app-mount .ChannelDms-channelpopout-popout {
+  background: var(--background-secondary-alt);
+  
+  // Header
+  .ChannelDms-channelpopout-header {
+    background: var(--background-secondary-alt);
+  }
+  
+  // Collapse btn
+  .ChannelDms-channelpopout-collapseButton {
+    background: var(--background-secondary);
+  }
+  
+  // Messages scroller
+  .scrollerBase-1Pkza4 {
+    @include scrollbar();
+    
+    -webkit-mask-image: none ;
+    background: var(--background-tertiary);
+  }
+  
+  // Text input
+  .form-3gdLxP {
+    margin-top: 0 ;
+    background: var(--background-secondary-alt);
+  }
+}
+// <- ChannelDms by Strencher
+
+
+// -> MemberCount by Arashiryuu
+// Members count
+#app-mount #MemberCount {
+  background: none ;
+
+  + .members-3WRCEx {
+    margin-top: 41px ;
+  }
+}
+// <- MemberCount by Arashiryuu
+
+
+// -> GuildProfile by Marmota (Jaime Filho)
+// Modal
+.guild-profile {
+
+  // Server img when no image is available
+  .avatar-3QF_VA img:not([src]) { display: none }
+
+  // Restoring default name position 
+  .guild-tag {
+    margin-left: 16px !important ;
+  }
+}
+// <- GuildProfile by Marmota (Jaime Filho)
+

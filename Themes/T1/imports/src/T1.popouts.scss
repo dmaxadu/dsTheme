@@ -1,0 +1,949 @@
+// * T1.popouts v0.1.381
+// Text chat / Server options / Context menus / Toolbar menus / User status / Tooltips
+
+// Popouts container
+.layerContainer-2lfOPe {
+  overflow: hidden ;
+}
+
+
+// Autocomplete popout
+.chatContent-3KubbW .form-3gdLxP .autocomplete-3NRXG8 {
+  background: var(--background-tertiary) ;
+  
+  // left sidebar
+  .rail-1BiMhk, .list-33W-Tv {
+    background: var(--background-secondary-alt) ;
+  }
+  
+  // Group header
+  .categoryHeader-OpJ1Ly {
+    background: var(--background-tertiary) ;
+  }
+  
+  // selected item  
+  .selected-3H3-RC {
+    background: var(--background-modifier-hover) ;
+  }
+  
+  // selected item cmd options
+  .option-Tt7anD {
+    background: var(--background-tertiary) ;
+  }
+
+  // Command list sidebar
+  .rail-1BiMhk .scrollerBase-1Pkza4::-webkit-scrollbar { display: none }
+}
+
+
+// Gif, Sticker, Emoji, BD emotes Picker
+.layerContainer-2lfOPe {
+  
+  // Main container (reactions picker, emoji, gif,.. )
+  .contentWrapper-2f9yME, .contentWrapper-3vHNP2 {
+    background-color: var(--background-tertiary);
+  }
+  
+  // Navbar
+  .navButtonActive-fwiUKp, .navButtonActive-1EqC5l, .navButtonSuperReactActive-1WNAEM { 
+    background: none ;
+  }
+  
+  // Popout content (Emoji, Sticker, GIFs)
+  .wrapper-3u51GQ, .wrapper-1NB3WY, .container-23gRWx {
+    
+    input { 
+      border-bottom: 1px solid var(--interactive-muted);
+     }
+
+    > div { 
+      background-color: var(--background-tertiary);
+     }
+
+    .scroller-2MALzE::-webkit-scrollbar { display: none } 
+
+    // - Sidebar left (Sticker/Emoji)
+    .wrapper-22rqw6 {
+      border-right: 1px solid var(--background-modifier-accent);
+
+      // Category Icons
+      .guildIcon-2SUGiq { 
+        background: none ;
+       }
+    }
+
+    // - Right side content (Sticker/Emoji)
+    // Category header
+    .wrapper-1NNaWG { 
+      position: relative ;
+      background: none ;
+    }
+
+    .inspector-DFKXwB { display: none }
+
+    // emojis
+    .emojiItem-277VFM {
+
+      // Icon for addding emojis to server
+      &:not([data-name]) { display: none }
+    }
+  }
+}
+
+
+// Context menus
+.layer-2BGhQ8 .menu-2TXYjN {
+  // background: var(--background-tertiary) ;
+  
+  .scroller-nxCRu_ {
+    padding: 6px !important;
+    
+    &::-webkit-scrollbar { display: none }
+  }
+  
+  // Options
+  .item-5ApiZt {
+    background: none ;
+    
+    // Critical option (like: bann, kick, ..)
+    &.colorDanger-3umuSx.focused-3LIdPu { background:rgba(240, 71, 71, 0.5) }
+    
+    // Options with checkbox
+    &[role="menuitemcheckbox"] {
+      
+      // Checkbox icon
+      .checkbox-397WsK { color: transparent }
+
+      // Checkbox checked ("x" icon for "uncheck")
+      &.focused-3LIdPu[aria-checked="true"] path {
+        color: var(--red) ;
+        d: path("M 18.4 4 L 12 10.4 L 5.6 4 L 4 5.6 L 10.4 12 L 4 18.4 L 5.6 20 L 12 13.6 L 18.4 20 L 20 18.4 L 13.6 12 L 20 5.6 L 18.4 4 Z");
+      }
+    }
+    
+    // Sliderbar (like: User Volume, ..)
+    .slider-cXPmnn {
+      top: 0 ;
+
+      .bar-2H7Q9u {
+        background: var(--background-primary) ;
+        top: 7px ;
+        
+        .barFill-3RgCsY { background: var(--interactive-normal) }
+      }
+      
+      .grabber-3R-Rx9 { top: 0 }
+      
+      &:hover .barFill-3RgCsY { background: var(--header-secondary) }
+    }
+  }
+  
+  // Secondary popout
+  // .submenu-1apzyU {
+  //   background: var(--background-tertiary) ;
+    
+  //   .scroller-1bVxF5 {
+  //     padding: 6px ;
+
+  //     &::-webkit-scrollbar { display: none }
+  //   }
+  // }
+}
+
+// Searchbar options popout
+.container-2McqkF {
+  background: var(--background-secondary-alt) ;
+  
+  @include shadow_effect("box_1");
+  
+  // Search options
+  .resultsGroup-cfY57t .option-ayUoaq {
+    
+    // weird gradiant to the right, idk
+    &::after, &::before { display: none }
+    
+    
+    // unnecessary icon
+    // .plusIcon-2V7coV { display: none }
+  }
+}
+
+// Searchbar results popout
+.searchResultsWrap-5RVOkx {
+  background: var(--background-tertiary) ;
+  width: -webkit-fill-available ;
+  min-width: 350px ;
+  max-width: 600px ;
+  
+  flex: 1 1 auto ;
+  -webkit-box-flex: 1 ;
+  
+  // Header
+  .searchHeader-1r_ZSh {
+    background: var(--background-secondary-alt) ;
+    
+    // n of search results
+    .colorHeaderPrimary-jN_yGr {
+      color: var(--text-normal) ;
+    }
+    
+    // Options btn
+    .tab-2j5AEF {
+      background: none ;
+      
+      &:hover {
+        color: var(--interactive-hover) ;
+      }
+    }
+  }
+  
+  // Switch pages btns
+  .searchHeaderTabList-3CZMQB {
+    
+    .item-2GWPIy {
+      background: none !important ;
+      
+      // what did that do ?
+      &:disabled {
+        color: var(--interactive-muted) ;
+        pointer-events: none ;
+      }
+    }
+  }
+  
+  // Content scroller
+  .scroller-3iiyhZ {
+    padding: 3px 0 0 0 !important ;
+    
+    // &::-webkit-scrollbar { display: none }
+    &::-webkit-scrollbar-track {
+      background-color: var(--background-secondary-alt) !important ;
+    }
+      
+    // Header - channel name
+    .channelNameContainer-4pFmC- {
+      background: var(--background-secondary-alt) ;
+      justify-content: center ;
+      margin-bottom: 4px ;
+      padding: 3px 0 ;
+
+      .channelNameText-2q3Lge, .channelNameIcon-2d0YcP {
+        color: var(--interactive-hover) ;
+        text-decoration: none ;
+      }
+
+      &:hover {
+        background: var(--background-secondary) ;
+
+        .channelNameText-2q3Lge, .channelNameIcon-2d0YcP {
+          color: var(--interactive-active) ;
+        }
+      }
+    }
+    
+    // Message container
+    .container-rZM65Y:hover {
+      background: var(--background-modifier-hover);
+    }
+
+    // Message content container
+    .searchResult-O9NDji {
+      background: none ;
+
+      // Message
+      .wrapper-30-Nkg.cozy-VmLDNB {
+        padding-left: 60px ;
+      }
+      
+      // pfp
+      .avatar-2e8lTP {
+        left: 8px ;
+      }
+    }
+  }
+}
+
+
+// Pins
+.messagesPopoutWrap-3zryHW:not(.recentMentionsPopout-2bI1ZN) {
+  width: 50vw ;
+  max-width: 600px ;
+  min-width: 480px ;
+  max-height: 80vh !important ;
+  background: var(--background-tertiary) ;
+  
+  @include shadow_effect("box_2");
+  
+  // Header
+  .header-1w9Q93 {
+    background: var(--background-secondary-alt) ;
+    box-shadow: none ;
+    
+    // "Pinned Messages"
+    .base-21yXnu {
+      color: var(--interactive-hover) ;
+    }
+  }
+  
+  // Messages container
+  .messagesPopout-eVzQcI {
+    padding-left: 0 ;
+    
+    &::-webkit-scrollbar { display: none }
+    
+    // Messages Placeholder
+    .emptyPlaceholder-1-a1LK {
+      margin: 8px 0 30px 0 ;
+      
+      // Text
+      .body-GBnhET{
+        color: var(--text-muted) ;
+      }
+    }
+    
+    // Pinned message
+    .messageGroupWrapper-1jf_7C {
+      border: none ;
+      background: none ;
+      
+      // Inner container
+      .messageGroupCozy-3v_RqN {
+        margin: 0 ;
+      }
+      
+      .jumpButton-1ZwI_j {
+        background: none ;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 500 ;
+      }
+    }
+  }
+  
+  // Footer "Protip"
+  .footer-5ji8u1 { display: none }
+}
+
+
+// Inbox
+.recentMentionsPopout-2bI1ZN {
+  width: 50vw ;
+  max-width: 600px ;
+  min-width: 480px ;
+  max-height: 80vh !important ;
+  background: var(--background-tertiary) ;
+  
+  @include shadow_effect("box_2");
+  
+  .header-145e10 {
+    background: var(--background-secondary-alt) ;
+    
+    .tab-TRrPC8, .button-1_oXub {
+      background: none !important ;
+    }
+  }
+
+  // For You
+  &.container-_dQaft {
+
+    .container-1A0qQO {
+      background: none ;
+
+      // unread pill
+      .unread-O4ZgUu { display: none }
+    }
+  }
+  
+  // Mentions
+  &.messagesPopoutWrap-3zryHW {
+    
+    // Scroller
+    .scrollerBase-1Pkza4 {
+      
+      @include scrollbar();
+      
+      &::-webkit-scrollbar { 
+        background: var(--background-secondary-alt) ;
+      }
+      
+      // Inner container
+      > div {
+        padding: 3px 0 3px 0 ;
+      }
+      
+      // Messages container
+      .container-iA3Qrz {
+        padding: 0 ;
+        margin-bottom: 24px ;
+        
+        // Channel name header
+        .channelHeader-DFRX8q {
+          position: relative ;
+          padding: 12px 12px 12px 8px ;
+          background: var(--background-secondary-alt) ;
+          
+          // Channel name, Server name
+          .channelName-3APnhp, .subtext-2-lYzF {
+            width: fit-content ;
+          }
+          
+          // Close btn
+          .closeButton-3CiW2j {
+            background: none ;
+          }
+        }
+        
+        // Message
+        .messageContainer-3VTXBC {
+          background: none ;
+        }
+      }
+      
+      // Footer
+      .scrollingFooterWrap-grqTU8 {
+        display: none ;
+      }
+    }
+  }
+  
+  // Unreads
+  &.container-2ebMPP {
+    
+    // Scroller
+    .scrollerBase-1Pkza4 {
+      margin: 0 ;
+      padding: 0 !important ;
+
+      &::-webkit-scrollbar { display: none }
+    }
+    
+    // Channel container
+    .channel-3NJZ1V {
+      padding: 3px 0 0 0 ;
+    }
+    
+    // Channel header container
+    .channelHeader-DFRX8q {
+      padding: 12px 12px 12px 8px ;
+      background: var(--background-secondary-alt) ;
+      
+      // Channel name, Server name
+      .channelName-3APnhp, .guildName-y1svcU {
+        width: fit-content ;
+      }
+      
+      @include Mentions_icon(".badge-1ImhlC");
+      
+      // Buttons
+      .button-1_oXub {
+        background: none ;
+      }
+      
+      // Collapse btn
+      .collapseButton-39-IRc {
+        position: static ;
+        display: flex ;
+        align-items: center ;
+        justify-content: center ;
+        height: 32px ;
+        width: 32px ;
+        margin-left: 12px ;
+        padding: 0 ;
+        color: var(--interactive-normal) ;
+        border-radius: 50% ;
+        
+        &:hover {
+          color: var(--interactive-hover) ;
+        }
+      }
+    }
+    
+    // Messages container
+    .messages-23can0 {
+      background: none ;
+      padding: 16px 6px 16px 0 ;
+      
+      // Msg seperator with date
+      > .divider-2rZFJK {
+        border: none ;
+
+        // Date 
+        .content-3spvdd { background: none }
+
+        // Seperator lines
+        &::before, &::after {
+          content: "" ;
+          height: 1px ;
+          width: 100% ;
+          background: var(--background-modifier-accent) ;
+        }
+      }
+      
+      // Messages item
+      > .messageContainer-8dSNjf {
+        
+        // "jump" to msg btn
+        > .jumpButton-1V_1FA {
+          right: 16px ;
+          
+          > .text-2ifC_x {
+            color: var(--interactive-normal) ;
+
+            &:hover {
+              color: var(--interactive-hover) ;
+            }
+          }
+        }
+      }
+    }
+
+    // Forum channel 
+    .container-3uGwcl {
+
+      // Posts
+      .forumPost-3i1mpe {
+        background: none ;
+        margin: 0 ;
+        border-radius: 0 ;
+        padding: 16px 6px 12px 12px ;
+
+        &:not(:first-child) {
+          border-top: 1px solid var(--background-primary) ;
+        }
+      }
+    }
+  }
+}
+
+
+// Threads popout
+.browser-mnQ1T7.container-18GwIk {
+  background: var(--background-tertiary) ;
+  
+  // Header
+  .header-3_zmOb {
+    background: var(--background-secondary-alt) ;
+    
+    // "#" Icon, "Threads" title, divider
+    .threadIcon-rd1kqG, .title-10Au0i, .divider-2xk5N2 { display: none }
+    
+    // Active/Archived Buttons
+    .tab-2Jo-cu {
+      background: none !important ;
+    }
+    
+    // Create new thread button
+    .createButton-oruGBs {
+      @include Btn();
+    }
+  }
+  
+  // Threads icon in content
+  .iconContainer-3XSL3J { display: none }
+  
+  // Thread item
+  .container-2rzKKA {
+    border: none ;
+    background: var(--background-secondary-alt) ;
+    
+    
+    &:hover {
+      background: var(--background-modifier-accent) ;
+    }
+    
+    // Name/test container
+    .left-1tSH9F {
+      row-gap: 5px ;
+    }
+    
+    // Name 
+    .threadNameLine-1FNzAW {
+      // align-self: center ;
+    }
+  }
+  
+  // Public/Private Buttons
+  .tab-1tp4jL {
+    background: none !important ;
+  }
+  
+  .container-2c4_8A .button-ejjZWC {
+    @include Btn("background");
+  }
+}
+
+
+// Invite to Server / Add friends to Dm / New Group Dm
+.focusLock-bHVOlV > .root-1CAIjD.small-2xUY-3.fullscreenOnMobile-2971EC {
+  background: var(--background-tertiary);
+
+  // - Header
+  .header-1ffhsl {
+    background: var(--background-secondary-alt);
+    
+    // Title
+    h2 {
+      color: var(--text-normal);
+    }
+    
+    // Invite to server, create group Searchbar
+    .container-2oNtJn, .container-1SX9VC {
+      border-radius: 0 ;
+      padding-bottom: 3px ;
+      border-bottom: 1px solid var(--interactive-muted) ;
+      background: var(--background-secondary-alt);
+      
+      // Added friend tag
+      .tag-15zcD_ {
+        margin-right: 5px ;
+      }
+      
+      // Text input
+      .input-2FSSDe {
+        padding: 0 ;
+        margin: 0 ;      
+      }
+    }
+    
+    // Invite to Server > Close btn
+    .closeButton-2RO-ed {
+      top: 8px ;
+      right: 8px ;
+    }
+    
+    // Add friends to Dm > "Add" btn
+    .addButton-cr4zLw .button-ejjZWC {
+      @include Btn("background");
+    }
+  }
+  
+  // - Content / Scroller
+  // Add friends to Dm / New Group Dm
+  .scroller-1Kbkqa {
+    max-height: 40vh ;
+    padding-right: 8px !important ;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 5%, #000 96%, transparent);
+    
+    &::-webkit-scrollbar { display: none }
+    
+    .friendWrapper-2x5j0A {
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--background-modifier-hover) ;
+      }
+
+      .friendSelected-3cwmD7 {
+        background: none ;
+      }
+
+      &:hover {
+        background: var(--background-modifier-hover) ;
+      }
+
+      .checkboxWrapper-2fDzaA {
+        cursor: pointer ;
+      }
+    }
+  }
+  
+  // Invite to Server
+  .scroller-3nFW5p {
+    max-height: 40vh ;
+    padding: 16px 8px 8px 8px !important;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 5%, #000 96%, transparent);
+
+    &::-webkit-scrollbar { display: none }
+
+    // User item
+    .inviteRow-3vmB7i {
+      background: none ;
+      padding: 7px 8px ; 
+      margin-right: 0 ;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--background-modifier-hover) ;
+      }
+    }
+
+    // Invite btn
+    .inviteRowButton-3hcOhY {
+      padding: 2px 0 ;
+      width: auto ;
+      min-width: unset ;
+
+      @include Btn();
+    }
+  }
+  
+  // Footer
+  .footer-IubaaS, .footer-C9oLp9 {
+    background: var(--background-secondary-alt);
+    
+    .content-3nJg0c:before { display: none }
+    
+    // Info txt
+    .title-3hptVQ { display: none }
+    
+    // Invite link text filed
+    .input-2g-os5 {
+      border: none ;
+      background: var(--background-tertiary);
+    }
+    
+    .button-ejjZWC.lookFilled-1H2Jvj{
+      @include Btn("background");
+    }
+    
+    .colorStandard-21JIj7.size12-oc4dx4 {
+      text-align: center ;
+    }
+
+    .inviteBannerUpsell-1t_LYM { display: none }
+  }
+}
+ 
+
+// Tooltips
+// .layerContainer-2lfOPe .tooltip-33Jwqe {
+//   background: var(--background-tertiary) ;
+//   font-size: 14px ;
+//   font-weight: 600 ;
+  
+//   .tooltipPointer-sMBQqe {
+//     border-top-color: var(--background-tertiary) ;
+//   }
+// }
+
+
+// Notifications popout on receiving voice call
+.bg-1QIAus ~ .wrapper-3X0c60 { z-index: 1000 }
+
+
+// Server boost screen (normal server)
+.root-2zfUH6 .perksModal-CLcR1c {
+  background: var(--Main_Background);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  filter: var(--BGM_Blur) var(--BGM_Brightness) ;
+  
+  @include scrollbar();
+}
+
+
+// "All Active Threads" (from Channel list btn)
+// .root-1CAIjD .container-3GP6AV {
+//   background: var(--background-tertiary);
+  
+//   .header-3cSJjT {
+//     background: var(--background-secondary);
+//   }
+  
+//   .activeThreadsList-c8qlqZ {
+    
+//     .container-2rzKKA {
+//       border: none ;
+//       background: none ;
+      
+//       &:hover {
+//         background: var(--background-modifier-accent);
+//       }
+//     }
+//   }
+// }
+
+
+// Events modal and some other (needs some more testing)
+//.off 
+.layer-fP3xEz .root-1CAIjD {
+  background: var(--background-tertiary);
+  
+  // Header
+  .header-1sd0RU {
+    background: var(--background-secondary-alt);
+    
+    .fontDisplay-3Gtuks {
+      color: var(--interactive-hover);
+    }
+    
+    .button-ejjZWC {
+      @include Btn();
+    }
+  }
+  
+  // Content body
+  .content-GYGe57 {
+    padding: 0 !important ;
+    
+    &::-webkit-scrollbar { display: none } 
+  }
+  
+  // Create new event setup
+  // Progressbars
+  .selectedProgressBar-11z5d9 {
+    background: var(--interactive-active) ;
+  }
+  
+  // Progress tracker names
+  .colorBrand-3Xb6JG {
+    color: var(--text-normal) ;
+  }
+  
+  // .input-2g-os5 {
+  //   border: none ;
+    
+  //   &:focus {
+  //     background: var(--background-modifier-selected) ;
+  //   }
+  // }
+  
+  // Checkbox item list option
+  .item-1TA5qI {
+    background: var(--background-modifier-accent) ;
+    
+    &[aria-checked="true"] {
+      background: var(--background-modifier-selected) ;
+    }
+    
+    &[aria-checked="false"]:hover {
+      background: var(--background-modifier-hover) ;
+    }
+  }
+  
+  // Events (item card)
+  .card-8UsK4b {
+    background: var(--background-tertiary);
+    border-width: 0 ;
+    margin-top: 0px ;
+    border-radius: 0 ;
+    
+    &:not(:first-child) {
+      border-top-width: 1px ;
+    }
+    
+    &:hover {
+      background: var(--background-modifier-active);
+    }
+    
+    // Event name
+    .eventName-3XaUP0 {
+      color: var(--interactive-hover);
+    }
+    
+    // In card- content footer divider
+    .divider-2zyEHJ {
+      background: none ;
+    }
+    
+    .button-ejjZWC {
+      @include Btn();
+    }
+  }
+  
+  // Footer
+  .footer-IubaaS {
+    background: var(--background-secondary-alt);
+    
+    .inline-3eaUwP, .container-vujOuw {
+      .button-ejjZWC{
+        @include Btn();
+      }
+    }
+  }
+  
+  // Event info modal (maybe more)
+  &.root-wwggTZ {
+    
+    // Header
+    .container-3EBHNg {
+      background: var(--background-secondary-alt);
+      border: none ;
+      
+      // Nav bar item
+      .tabBarItem-2aZfB8 {
+        border: none ;  
+      }
+    }
+    
+    // Content
+    .contentContainer-BWAau5 {
+      background: var(--background-tertiary);
+    }
+  }
+}
+
+
+// Quick switch navigation/search
+.quickswitcher-pKcM9U {
+  background: var(--background-tertiary);
+  
+  .input-3r5zZY {
+    background: var(--background-modifier-accent);
+  }
+  
+  // Scroller 
+  .scroller-2qwVWY {
+    background: var(--background-tertiary);
+    margin: 0 ;
+    padding: 0 ;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 5%, #000 96%, transparent);
+    
+    &::-webkit-scrollbar { display: none }
+  }
+  
+  // Item
+  .result-u66Ywh {
+    
+    // :hover
+    &[aria-selected=true] {
+      background: var(--background-modifier-hover);
+    }
+    
+    // Unread channel
+    .contentUnread-1_MVDK {
+      color: var(--interactive-normal);
+    }
+    
+    @include Mentions_icon(".badge-3k1jbq");
+  }
+  
+  // Protip footer, Tutorial arrows idk
+  .protip-1jXzAl, .tutorial-1iwync {  display: none }
+}
+
+
+// Dismissables might just remove all
+.layer-2aCOJ3 {
+
+  &[style*="left: -"][style*="top: "] {
+    transform: translate( calc(50% + 10px), 25px);
+  }
+
+  .container-xB0xPf, .content-1rmYE-, .subscribeTooltipWrapper-3ipXtC, .upsellTooltipWrapper-1wqikQ
+
+  // BG container (* not sure if still used)
+  .container-xB0xPf, // *
+  .content-1rmYE-, // *
+  .subscribeTooltipWrapper-3ipXtC, // *
+  .root-1CAIjD, // *
+  .upsellTooltipWrapper-1wqikQ,
+  .container-5N5x2A {
+    background-color: var(--background-tertiary);
+    
+    // Pointer in Tooltipversion
+    &:after { display: none }
+  }
+
+  .button-ejjZWC { @include Btn() }
+    
+  .image-CRV_VX, .pointer-1j6vDv, .pointer-1iS5lL, .pointer-1bsD64 { display: none }
+}
+
+
+
+// Image gallery popout (yes, that selector suxs)
+.layer-fP3xEz .carouselModal-1eUFoq.root-1CAIjD.fullscreenOnMobile-2971EC {
+  background: none ;
+  box-shadow: none ;
+}

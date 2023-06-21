@@ -1,0 +1,42 @@
+$T1_version: "0.6.23" ; // Theme file v0.8
+
+@import 'src/T1.mixins.scss';       // Global Mixins and Variables
+@import 'src/T1.background.scss';   // Background image and Transparency
+@import 'src/T1.chat.scss';         // Text and voice chat
+@import 'src/T1.home.scss';         // Home Tabs / DMs-Sidebar
+@import 'src/T1.popouts.scss';      // Popouts / Tooltips
+@import 'src/T1.server-view.scss';  // Channels / Member / Discovery
+@import 'src/T1.serverbar.scss';    // Serverbar + Addons
+@import 'src/T1.settings.scss';     // Settings menus
+@import 'src/T1.titlebar.scss';     // Header-, Titlebar / Notifications
+@import 'src/T1.user.scss';         // User-Popout / Modal
+@import 'src/T1.compatibility.scss';// Plugin Compatibility
+
+// Layer transitions
+.layers-OrUESM > .layer-86YKbF { 
+  transform: none !important ;
+}
+
+
+.base-2jDfDU { 
+  height: 100% !important ;
+}
+
+
+// "Bot"/"server" Tag Indicator
+.botTag-7aX5WZ { 
+  color: var(--text-normal) ;
+  background-color: var(--background-secondary) ;
+}
+
+
+// Default scrollbar design (needs some rework)
+.app-3xd6d0 .scrollerBase-1Pkza4 { @include scrollbar() }
+
+
+// Tab focus thing
+.ring-370dIp {
+  box-shadow: none ;
+  border-bottom: 2px solid var(--interactive-active);
+  border-radius: 0;
+}
